@@ -1,0 +1,25 @@
+
+x = BigCat.Value(1:82);
+
+valModel = arima('Constant',1,'ARLags',4,'SARLags',12,'D',3,...
+            'Seasonality',12,'MALags',4,'SMALags',2);
+      
+valFit = estimate(valModel,x);
+
+[Y,YMSE] = forecast(valFit,14);
+
+lower = Y - 1.96*sqrt(YMSE);
+upper = Y + 1.96*sqrt(YMSE);
+
+figure
+plot(x,'Color',[.7,.7,.7]);
+hold on
+h1 = plot(83:96,lower,'r:','LineWidth',2);
+plot(83:96,upper,'r:','LineWidth',2)
+h2 = plot(83:96,Y,'k:','LineWidth',2);
+legend([h1 h2],'95% Interval','Forecast',...
+	     'Location','NorthWest')
+title('Composite Index Forecast')
+axis([0,100,-2,max(x)])
+grid on
+hold off
