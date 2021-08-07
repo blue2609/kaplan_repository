@@ -1,0 +1,15 @@
+{% extends "parentLayout.html" %}
+{% block content %}
+    {% for application in mbats_apps_df.itertuples() %}
+        <div class='container'>
+            <div class='row'>
+                <div class='col-md-4'>
+                    {{ application.Name }}                    
+                </div>
+                <div class='col-md-4'>
+                    {{ application.Version }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}

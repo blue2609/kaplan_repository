@@ -48,3 +48,13 @@ Thumbs.db
 *.mov
 *.wmv
 
+#Byte-compiled / optimized / DLL files
+__pycache__/
+
+#datasets files
+*.csv
+*.xls
+*.xlsx
+
+# python notebook 
+.ipynb_checkpoints/
