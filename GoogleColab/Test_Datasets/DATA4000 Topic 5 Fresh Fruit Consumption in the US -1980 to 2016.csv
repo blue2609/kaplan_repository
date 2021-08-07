@@ -1,0 +1,778 @@
+Fruit,Category,Type,Year,Pounds Consumed Per Capita
+Bananas,Non-Citrus,Fresh,1980,20.77
+Bananas,Non-Citrus,Fresh,1981,21.48
+Bananas,Non-Citrus,Fresh,1982,22.54
+Bananas,Non-Citrus,Fresh,1983,21.25
+Bananas,Non-Citrus,Fresh,1984,22.18
+Bananas,Non-Citrus,Fresh,1985,23.48
+Bananas,Non-Citrus,Fresh,1986,25.82
+Bananas,Non-Citrus,Fresh,1987,25.02
+Bananas,Non-Citrus,Fresh,1988,24.29
+Bananas,Non-Citrus,Fresh,1989,24.71
+Bananas,Non-Citrus,Fresh,1990,24.36
+Bananas,Non-Citrus,Fresh,1991,25.05
+Bananas,Non-Citrus,Fresh,1992,27.12
+Bananas,Non-Citrus,Fresh,1993,26.6
+Bananas,Non-Citrus,Fresh,1994,27.78
+Bananas,Non-Citrus,Fresh,1995,27.08
+Bananas,Non-Citrus,Fresh,1996,27.6
+Bananas,Non-Citrus,Fresh,1997,27.16
+Bananas,Non-Citrus,Fresh,1998,28.01
+Bananas,Non-Citrus,Fresh,1999,30.7
+Bananas,Non-Citrus,Fresh,2000,28.45
+Bananas,Non-Citrus,Fresh,2001,26.63
+Bananas,Non-Citrus,Fresh,2002,26.78
+Bananas,Non-Citrus,Fresh,2003,26.17
+Bananas,Non-Citrus,Fresh,2004,25.78
+Bananas,Non-Citrus,Fresh,2005,25.18
+Bananas,Non-Citrus,Fresh,2006,25.11
+Bananas,Non-Citrus,Fresh,2007,25.95
+Bananas,Non-Citrus,Fresh,2008,25.04
+Bananas,Non-Citrus,Fresh,2009,22.01
+Bananas,Non-Citrus,Fresh,2010,25.61
+Bananas,Non-Citrus,Fresh,2011,25.54
+Bananas,Non-Citrus,Fresh,2012,26.98
+Bananas,Non-Citrus,Fresh,2013,28.08
+Bananas,Non-Citrus,Fresh,2014,27.95
+Bananas,Non-Citrus,Fresh,2015,28.03
+Bananas,Non-Citrus,Fresh,2016,27.55
+Apples,Non-Citrus,Fresh,1980,19.2
+Apples,Non-Citrus,Fresh,1981,16.85
+Apples,Non-Citrus,Fresh,1982,17.54
+Apples,Non-Citrus,Fresh,1983,18.27
+Apples,Non-Citrus,Fresh,1984,18.35
+Apples,Non-Citrus,Fresh,1985,17.26
+Apples,Non-Citrus,Fresh,1986,17.84
+Apples,Non-Citrus,Fresh,1987,20.83
+Apples,Non-Citrus,Fresh,1988,19.84
+Apples,Non-Citrus,Fresh,1989,21.22
+Apples,Non-Citrus,Fresh,1990,19.58
+Apples,Non-Citrus,Fresh,1991,18.11
+Apples,Non-Citrus,Fresh,1992,19.14
+Apples,Non-Citrus,Fresh,1993,19.01
+Apples,Non-Citrus,Fresh,1994,19.37
+Apples,Non-Citrus,Fresh,1995,18.69
+Apples,Non-Citrus,Fresh,1996,18.67
+Apples,Non-Citrus,Fresh,1997,18.09
+Apples,Non-Citrus,Fresh,1998,18.98
+Apples,Non-Citrus,Fresh,1999,18.5
+Apples,Non-Citrus,Fresh,2000,17.46
+Apples,Non-Citrus,Fresh,2001,15.61
+Apples,Non-Citrus,Fresh,2002,16
+Apples,Non-Citrus,Fresh,2003,16.91
+Apples,Non-Citrus,Fresh,2004,18.79
+Apples,Non-Citrus,Fresh,2005,16.66
+Apples,Non-Citrus,Fresh,2006,17.73
+Apples,Non-Citrus,Fresh,2007,16.39
+Apples,Non-Citrus,Fresh,2008,15.88
+Apples,Non-Citrus,Fresh,2009,16.2
+Apples,Non-Citrus,Fresh,2010,15.29
+Apples,Non-Citrus,Fresh,2011,15.45
+Apples,Non-Citrus,Fresh,2012,16.02
+Apples,Non-Citrus,Fresh,2013,17.33
+Apples,Non-Citrus,Fresh,2014,18.61
+Apples,Non-Citrus,Fresh,2015,17.36
+Apples,Non-Citrus,Fresh,2016,18.55
+Apricots,Non-Citrus,Fresh,1980,0.1
+Apricots,Non-Citrus,Fresh,1981,0.1
+Apricots,Non-Citrus,Fresh,1982,0.08
+Apricots,Non-Citrus,Fresh,1983,0.08
+Apricots,Non-Citrus,Fresh,1984,0.13
+Apricots,Non-Citrus,Fresh,1985,0.16
+Apricots,Non-Citrus,Fresh,1986,0.1
+Apricots,Non-Citrus,Fresh,1987,0.08
+Apricots,Non-Citrus,Fresh,1988,0.16
+Apricots,Non-Citrus,Fresh,1989,0.09
+Apricots,Non-Citrus,Fresh,1990,0.16
+Apricots,Non-Citrus,Fresh,1991,0.13
+Apricots,Non-Citrus,Fresh,1992,0.15
+Apricots,Non-Citrus,Fresh,1993,0.13
+Apricots,Non-Citrus,Fresh,1994,0.15
+Apricots,Non-Citrus,Fresh,1995,0.1
+Apricots,Non-Citrus,Fresh,1996,0.09
+Apricots,Non-Citrus,Fresh,1997,0.14
+Apricots,Non-Citrus,Fresh,1998,0.12
+Apricots,Non-Citrus,Fresh,1999,0.12
+Apricots,Non-Citrus,Fresh,2000,0.15
+Apricots,Non-Citrus,Fresh,2001,0.08
+Apricots,Non-Citrus,Fresh,2002,0.09
+Apricots,Non-Citrus,Fresh,2003,0.13
+Apricots,Non-Citrus,Fresh,2004,0.12
+Apricots,Non-Citrus,Fresh,2005,0.13
+Apricots,Non-Citrus,Fresh,2006,0.08
+Apricots,Non-Citrus,Fresh,2007,0.16
+Apricots,Non-Citrus,Fresh,2008,0.13
+Apricots,Non-Citrus,Fresh,2009,0.14
+Apricots,Non-Citrus,Fresh,2010,0.12
+Apricots,Non-Citrus,Fresh,2011,0.12
+Apricots,Non-Citrus,Fresh,2012,0.1
+Apricots,Non-Citrus,Fresh,2013,0.11
+Apricots,Non-Citrus,Fresh,2014,0.12
+Apricots,Non-Citrus,Fresh,2015,0.08
+Apricots,Non-Citrus,Fresh,2016,0.13
+Avocados,Non-Citrus,Fresh,1980,2.08
+Avocados,Non-Citrus,Fresh,1981,1.55
+Avocados,Non-Citrus,Fresh,1982,1.85
+Avocados,Non-Citrus,Fresh,1983,2.19
+Avocados,Non-Citrus,Fresh,1984,1.83
+Avocados,Non-Citrus,Fresh,1985,1.51
+Avocados,Non-Citrus,Fresh,1986,2.35
+Avocados,Non-Citrus,Fresh,1987,1.59
+Avocados,Non-Citrus,Fresh,1988,1.56
+Avocados,Non-Citrus,Fresh,1989,1.08
+Avocados,Non-Citrus,Fresh,1990,1.41
+Avocados,Non-Citrus,Fresh,1991,1.43
+Avocados,Non-Citrus,Fresh,1992,2.16
+Avocados,Non-Citrus,Fresh,1993,1.33
+Avocados,Non-Citrus,Fresh,1994,1.35
+Avocados,Non-Citrus,Fresh,1995,1.58
+Avocados,Non-Citrus,Fresh,1996,1.58
+Avocados,Non-Citrus,Fresh,1997,1.73
+Avocados,Non-Citrus,Fresh,1998,1.52
+Avocados,Non-Citrus,Fresh,1999,1.92
+Avocados,Non-Citrus,Fresh,2000,2.21
+Avocados,Non-Citrus,Fresh,2001,2.5
+Avocados,Non-Citrus,Fresh,2002,2.43
+Avocados,Non-Citrus,Fresh,2003,2.67
+Avocados,Non-Citrus,Fresh,2004,3.17
+Avocados,Non-Citrus,Fresh,2005,3.46
+Avocados,Non-Citrus,Fresh,2006,3.5
+Avocados,Non-Citrus,Fresh,2007,3.5
+Avocados,Non-Citrus,Fresh,2008,3.83
+Avocados,Non-Citrus,Fresh,2009,4.25
+Avocados,Non-Citrus,Fresh,2010,4
+Avocados,Non-Citrus,Fresh,2011,5.1
+Avocados,Non-Citrus,Fresh,2012,5.62
+Avocados,Non-Citrus,Fresh,2013,6.11
+Avocados,Non-Citrus,Fresh,2014,6.98
+Avocados,Non-Citrus,Fresh,2015,7.19
+Avocados,Non-Citrus,Fresh,2016,7.08
+Blueberries,Non-Citrus,Fresh,1980,0.18
+Blueberries,Non-Citrus,Fresh,1981,0.16
+Blueberries,Non-Citrus,Fresh,1982,0.16
+Blueberries,Non-Citrus,Fresh,1983,0.14
+Blueberries,Non-Citrus,Fresh,1984,0.24
+Blueberries,Non-Citrus,Fresh,1985,0.25
+Blueberries,Non-Citrus,Fresh,1986,0.19
+Blueberries,Non-Citrus,Fresh,1987,0.19
+Blueberries,Non-Citrus,Fresh,1988,0.25
+Blueberries,Non-Citrus,Fresh,1989,0.23
+Blueberries,Non-Citrus,Fresh,1990,0.11
+Blueberries,Non-Citrus,Fresh,1991,0.17
+Blueberries,Non-Citrus,Fresh,1992,0.2
+Blueberries,Non-Citrus,Fresh,1993,0.26
+Blueberries,Non-Citrus,Fresh,1994,0.27
+Blueberries,Non-Citrus,Fresh,1995,0.32
+Blueberries,Non-Citrus,Fresh,1996,0.27
+Blueberries,Non-Citrus,Fresh,1997,0.29
+Blueberries,Non-Citrus,Fresh,1998,0.32
+Blueberries,Non-Citrus,Fresh,1999,0.31
+Blueberries,Non-Citrus,Fresh,2000,0.26
+Blueberries,Non-Citrus,Fresh,2001,0.34
+Blueberries,Non-Citrus,Fresh,2002,0.39
+Blueberries,Non-Citrus,Fresh,2003,0.38
+Blueberries,Non-Citrus,Fresh,2004,0.53
+Blueberries,Non-Citrus,Fresh,2005,0.44
+Blueberries,Non-Citrus,Fresh,2006,0.56
+Blueberries,Non-Citrus,Fresh,2007,0.59
+Blueberries,Non-Citrus,Fresh,2008,0.8
+Blueberries,Non-Citrus,Fresh,2009,0.96
+Blueberries,Non-Citrus,Fresh,2010,1.12
+Blueberries,Non-Citrus,Fresh,2011,1.29
+Blueberries,Non-Citrus,Fresh,2012,1.33
+Blueberries,Non-Citrus,Fresh,2013,1.38
+Blueberries,Non-Citrus,Fresh,2014,1.51
+Blueberries,Non-Citrus,Fresh,2015,1.61
+Blueberries,Non-Citrus,Fresh,2016,1.77
+Cherries,Non-Citrus,Fresh,1980,0.69
+Cherries,Non-Citrus,Fresh,1981,0.53
+Cherries,Non-Citrus,Fresh,1982,0.52
+Cherries,Non-Citrus,Fresh,1983,0.73
+Cherries,Non-Citrus,Fresh,1984,0.7
+Cherries,Non-Citrus,Fresh,1985,0.42
+Cherries,Non-Citrus,Fresh,1986,0.49
+Cherries,Non-Citrus,Fresh,1987,0.72
+Cherries,Non-Citrus,Fresh,1988,0.52
+Cherries,Non-Citrus,Fresh,1989,0.54
+Cherries,Non-Citrus,Fresh,1990,0.39
+Cherries,Non-Citrus,Fresh,1991,0.4
+Cherries,Non-Citrus,Fresh,1992,0.53
+Cherries,Non-Citrus,Fresh,1993,0.43
+Cherries,Non-Citrus,Fresh,1994,0.52
+Cherries,Non-Citrus,Fresh,1995,0.29
+Cherries,Non-Citrus,Fresh,1996,0.4
+Cherries,Non-Citrus,Fresh,1997,0.6
+Cherries,Non-Citrus,Fresh,1998,0.52
+Cherries,Non-Citrus,Fresh,1999,0.63
+Cherries,Non-Citrus,Fresh,2000,0.6
+Cherries,Non-Citrus,Fresh,2001,0.77
+Cherries,Non-Citrus,Fresh,2002,0.7
+Cherries,Non-Citrus,Fresh,2003,0.92
+Cherries,Non-Citrus,Fresh,2004,0.99
+Cherries,Non-Citrus,Fresh,2005,0.87
+Cherries,Non-Citrus,Fresh,2006,1.06
+Cherries,Non-Citrus,Fresh,2007,1.22
+Cherries,Non-Citrus,Fresh,2008,1.31
+Cherries,Non-Citrus,Fresh,2009,1.56
+Cherries,Non-Citrus,Fresh,2010,1.31
+Cherries,Non-Citrus,Fresh,2011,1.3
+Cherries,Non-Citrus,Fresh,2012,1.5
+Cherries,Non-Citrus,Fresh,2013,0.99
+Cherries,Non-Citrus,Fresh,2014,1.17
+Cherries,Non-Citrus,Fresh,2015,1.15
+Cherries,Non-Citrus,Fresh,2016,1.17
+Cranberries,Non-Citrus,Fresh,1980,0.14
+Cranberries,Non-Citrus,Fresh,1981,0.21
+Cranberries,Non-Citrus,Fresh,1982,0.21
+Cranberries,Non-Citrus,Fresh,1983,0.14
+Cranberries,Non-Citrus,Fresh,1984,0.13
+Cranberries,Non-Citrus,Fresh,1985,0.13
+Cranberries,Non-Citrus,Fresh,1986,0.14
+Cranberries,Non-Citrus,Fresh,1987,0.11
+Cranberries,Non-Citrus,Fresh,1988,0.07
+Cranberries,Non-Citrus,Fresh,1989,0.07
+Cranberries,Non-Citrus,Fresh,1990,0.05
+Cranberries,Non-Citrus,Fresh,1991,0.07
+Cranberries,Non-Citrus,Fresh,1992,0.07
+Cranberries,Non-Citrus,Fresh,1993,0.07
+Cranberries,Non-Citrus,Fresh,1994,0.08
+Cranberries,Non-Citrus,Fresh,1995,0.08
+Cranberries,Non-Citrus,Fresh,1996,0.08
+Cranberries,Non-Citrus,Fresh,1997,0.07
+Cranberries,Non-Citrus,Fresh,1998,0.08
+Cranberries,Non-Citrus,Fresh,1999,0.11
+Cranberries,Non-Citrus,Fresh,2000,0.14
+Cranberries,Non-Citrus,Fresh,2001,0.13
+Cranberries,Non-Citrus,Fresh,2002,0.11
+Cranberries,Non-Citrus,Fresh,2003,0.1
+Cranberries,Non-Citrus,Fresh,2004,0.11
+Cranberries,Non-Citrus,Fresh,2005,0.09
+Cranberries,Non-Citrus,Fresh,2006,0.09
+Cranberries,Non-Citrus,Fresh,2007,0.1
+Cranberries,Non-Citrus,Fresh,2008,0.1
+Cranberries,Non-Citrus,Fresh,2009,0.09
+Cranberries,Non-Citrus,Fresh,2010,0.06
+Cranberries,Non-Citrus,Fresh,2011,0.06
+Cranberries,Non-Citrus,Fresh,2012,0.07
+Cranberries,Non-Citrus,Fresh,2013,0.08
+Cranberries,Non-Citrus,Fresh,2014,0.07
+Cranberries,Non-Citrus,Fresh,2015,0.12
+Cranberries,Non-Citrus,Fresh,2016,0.12
+Grapefruit,Citrus,Fresh,1980,7.3
+Grapefruit,Citrus,Fresh,1981,6.65
+Grapefruit,Citrus,Fresh,1982,7.2
+Grapefruit,Citrus,Fresh,1983,7.84
+Grapefruit,Citrus,Fresh,1984,5.98
+Grapefruit,Citrus,Fresh,1985,5.51
+Grapefruit,Citrus,Fresh,1986,6.13
+Grapefruit,Citrus,Fresh,1987,6.35
+Grapefruit,Citrus,Fresh,1988,6.69
+Grapefruit,Citrus,Fresh,1989,6.6
+Grapefruit,Citrus,Fresh,1990,4.59
+Grapefruit,Citrus,Fresh,1991,5.86
+Grapefruit,Citrus,Fresh,1992,5.92
+Grapefruit,Citrus,Fresh,1993,6.2
+Grapefruit,Citrus,Fresh,1994,6.07
+Grapefruit,Citrus,Fresh,1995,6
+Grapefruit,Citrus,Fresh,1996,5.85
+Grapefruit,Citrus,Fresh,1997,6.18
+Grapefruit,Citrus,Fresh,1998,5.94
+Grapefruit,Citrus,Fresh,1999,5.75
+Grapefruit,Citrus,Fresh,2000,5.09
+Grapefruit,Citrus,Fresh,2001,4.85
+Grapefruit,Citrus,Fresh,2002,4.63
+Grapefruit,Citrus,Fresh,2003,4.1
+Grapefruit,Citrus,Fresh,2004,4.14
+Grapefruit,Citrus,Fresh,2005,2.65
+Grapefruit,Citrus,Fresh,2006,2.31
+Grapefruit,Citrus,Fresh,2007,2.84
+Grapefruit,Citrus,Fresh,2008,3.16
+Grapefruit,Citrus,Fresh,2009,2.8
+Grapefruit,Citrus,Fresh,2010,2.76
+Grapefruit,Citrus,Fresh,2011,2.71
+Grapefruit,Citrus,Fresh,2012,2.37
+Grapefruit,Citrus,Fresh,2013,2.64
+Grapefruit,Citrus,Fresh,2014,2.4
+Grapefruit,Citrus,Fresh,2015,2.23
+Grapefruit,Citrus,Fresh,2016,1.94
+Grapes,Non-Citrus,Fresh,1980,3.97
+Grapes,Non-Citrus,Fresh,1981,4.05
+Grapes,Non-Citrus,Fresh,1982,5.72
+Grapes,Non-Citrus,Fresh,1983,5.59
+Grapes,Non-Citrus,Fresh,1984,6.09
+Grapes,Non-Citrus,Fresh,1985,6.84
+Grapes,Non-Citrus,Fresh,1986,7.1
+Grapes,Non-Citrus,Fresh,1987,7.05
+Grapes,Non-Citrus,Fresh,1988,7.7
+Grapes,Non-Citrus,Fresh,1989,7.94
+Grapes,Non-Citrus,Fresh,1990,7.82
+Grapes,Non-Citrus,Fresh,1991,7.26
+Grapes,Non-Citrus,Fresh,1992,7.12
+Grapes,Non-Citrus,Fresh,1993,6.98
+Grapes,Non-Citrus,Fresh,1994,7.03
+Grapes,Non-Citrus,Fresh,1995,7.46
+Grapes,Non-Citrus,Fresh,1996,6.73
+Grapes,Non-Citrus,Fresh,1997,7.76
+Grapes,Non-Citrus,Fresh,1998,7.17
+Grapes,Non-Citrus,Fresh,1999,7.97
+Grapes,Non-Citrus,Fresh,2000,7.44
+Grapes,Non-Citrus,Fresh,2001,7.38
+Grapes,Non-Citrus,Fresh,2002,8.42
+Grapes,Non-Citrus,Fresh,2003,7.66
+Grapes,Non-Citrus,Fresh,2004,7.8
+Grapes,Non-Citrus,Fresh,2005,8.6
+Grapes,Non-Citrus,Fresh,2006,7.59
+Grapes,Non-Citrus,Fresh,2007,8.01
+Grapes,Non-Citrus,Fresh,2008,8.26
+Grapes,Non-Citrus,Fresh,2009,7.66
+Grapes,Non-Citrus,Fresh,2010,7.93
+Grapes,Non-Citrus,Fresh,2011,7.35
+Grapes,Non-Citrus,Fresh,2012,7.57
+Grapes,Non-Citrus,Fresh,2013,7.75
+Grapes,Non-Citrus,Fresh,2014,7.66
+Grapes,Non-Citrus,Fresh,2015,7.86
+Grapes,Non-Citrus,Fresh,2016,8.08
+Kiwifruit,Non-Citrus,Fresh,1980,      na
+Kiwifruit,Non-Citrus,Fresh,1981,      na
+Kiwifruit,Non-Citrus,Fresh,1982,0.07
+Kiwifruit,Non-Citrus,Fresh,1983,0.09
+Kiwifruit,Non-Citrus,Fresh,1984,0.15
+Kiwifruit,Non-Citrus,Fresh,1985,0.18
+Kiwifruit,Non-Citrus,Fresh,1986,0.21
+Kiwifruit,Non-Citrus,Fresh,1987,0.28
+Kiwifruit,Non-Citrus,Fresh,1988,0.34
+Kiwifruit,Non-Citrus,Fresh,1989,0.48
+Kiwifruit,Non-Citrus,Fresh,1990,0.48
+Kiwifruit,Non-Citrus,Fresh,1991,0.32
+Kiwifruit,Non-Citrus,Fresh,1992,0.51
+Kiwifruit,Non-Citrus,Fresh,1993,0.52
+Kiwifruit,Non-Citrus,Fresh,1994,0.51
+Kiwifruit,Non-Citrus,Fresh,1995,0.51
+Kiwifruit,Non-Citrus,Fresh,1996,0.46
+Kiwifruit,Non-Citrus,Fresh,1997,0.52
+Kiwifruit,Non-Citrus,Fresh,1998,0.53
+Kiwifruit,Non-Citrus,Fresh,1999,0.52
+Kiwifruit,Non-Citrus,Fresh,2000,0.56
+Kiwifruit,Non-Citrus,Fresh,2001,0.44
+Kiwifruit,Non-Citrus,Fresh,2002,0.38
+Kiwifruit,Non-Citrus,Fresh,2003,0.38
+Kiwifruit,Non-Citrus,Fresh,2004,0.41
+Kiwifruit,Non-Citrus,Fresh,2005,0.45
+Kiwifruit,Non-Citrus,Fresh,2006,0.47
+Kiwifruit,Non-Citrus,Fresh,2007,0.44
+Kiwifruit,Non-Citrus,Fresh,2008,0.46
+Kiwifruit,Non-Citrus,Fresh,2009,0.5
+Kiwifruit,Non-Citrus,Fresh,2010,0.5
+Kiwifruit,Non-Citrus,Fresh,2011,0.58
+Kiwifruit,Non-Citrus,Fresh,2012,0.54
+Kiwifruit,Non-Citrus,Fresh,2013,0.46
+Kiwifruit,Non-Citrus,Fresh,2014,0.56
+Kiwifruit,Non-Citrus,Fresh,2015,0.63
+Kiwifruit,Non-Citrus,Fresh,2016,0.57
+Lemons,Citrus,Fresh,1980,1.94
+Lemons,Citrus,Fresh,1981,2.03
+Lemons,Citrus,Fresh,1982,2.09
+Lemons,Citrus,Fresh,1983,2.34
+Lemons,Citrus,Fresh,1984,2.17
+Lemons,Citrus,Fresh,1985,2.32
+Lemons,Citrus,Fresh,1986,2.49
+Lemons,Citrus,Fresh,1987,2.5
+Lemons,Citrus,Fresh,1988,2.49
+Lemons,Citrus,Fresh,1989,2.41
+Lemons,Citrus,Fresh,1990,2.6
+Lemons,Citrus,Fresh,1991,2.6
+Lemons,Citrus,Fresh,1992,2.53
+Lemons,Citrus,Fresh,1993,2.64
+Lemons,Citrus,Fresh,1994,2.66
+Lemons,Citrus,Fresh,1995,2.84
+Lemons,Citrus,Fresh,1996,2.86
+Lemons,Citrus,Fresh,1997,2.76
+Lemons,Citrus,Fresh,1998,2.46
+Lemons,Citrus,Fresh,1999,2.61
+Lemons,Citrus,Fresh,2000,2.44
+Lemons,Citrus,Fresh,2001,2.97
+Lemons,Citrus,Fresh,2002,3.34
+Lemons,Citrus,Fresh,2003,3.33
+Lemons,Citrus,Fresh,2004,3.12
+Lemons,Citrus,Fresh,2005,2.95
+Lemons,Citrus,Fresh,2006,4.15
+Lemons,Citrus,Fresh,2007,2.81
+Lemons,Citrus,Fresh,2008,1.97
+Lemons,Citrus,Fresh,2009,3.12
+Lemons,Citrus,Fresh,2010,2.79
+Lemons,Citrus,Fresh,2011,3.46
+Lemons,Citrus,Fresh,2012,3.94
+Lemons,Citrus,Fresh,2013,3.48
+Lemons,Citrus,Fresh,2014,3.42
+Lemons,Citrus,Fresh,2015,3.6
+Lemons,Citrus,Fresh,2016,4.15
+Limes,Citrus,Fresh,1980,0.36
+Limes,Citrus,Fresh,1981,0.42
+Limes,Citrus,Fresh,1982,0.38
+Limes,Citrus,Fresh,1983,0.52
+Limes,Citrus,Fresh,1984,0.45
+Limes,Citrus,Fresh,1985,0.56
+Limes,Citrus,Fresh,1986,0.58
+Limes,Citrus,Fresh,1987,0.51
+Limes,Citrus,Fresh,1988,0.56
+Limes,Citrus,Fresh,1989,0.69
+Limes,Citrus,Fresh,1990,0.66
+Limes,Citrus,Fresh,1991,0.75
+Limes,Citrus,Fresh,1992,1.02
+Limes,Citrus,Fresh,1993,0.95
+Limes,Citrus,Fresh,1994,0.97
+Limes,Citrus,Fresh,1995,1.18
+Limes,Citrus,Fresh,1996,1.14
+Limes,Citrus,Fresh,1997,1.15
+Limes,Citrus,Fresh,1998,1.4
+Limes,Citrus,Fresh,1999,1.33
+Limes,Citrus,Fresh,2000,1.39
+Limes,Citrus,Fresh,2001,1.5
+Limes,Citrus,Fresh,2002,1.1
+Limes,Citrus,Fresh,2003,1.77
+Limes,Citrus,Fresh,2004,1.85
+Limes,Citrus,Fresh,2005,2.09
+Limes,Citrus,Fresh,2006,2.26
+Limes,Citrus,Fresh,2007,2.27
+Limes,Citrus,Fresh,2008,2.48
+Limes,Citrus,Fresh,2009,2.55
+Limes,Citrus,Fresh,2010,2.57
+Limes,Citrus,Fresh,2011,2.5
+Limes,Citrus,Fresh,2012,2.57
+Limes,Citrus,Fresh,2013,2.96
+Limes,Citrus,Fresh,2014,3.07
+Limes,Citrus,Fresh,2015,3.01
+Limes,Citrus,Fresh,2016,3.48
+Mangoes,Non-Citrus,Fresh,1980,0.25
+Mangoes,Non-Citrus,Fresh,1981,0.2
+Mangoes,Non-Citrus,Fresh,1982,0.29
+Mangoes,Non-Citrus,Fresh,1983,0.43
+Mangoes,Non-Citrus,Fresh,1984,0.43
+Mangoes,Non-Citrus,Fresh,1985,0.43
+Mangoes,Non-Citrus,Fresh,1986,0.49
+Mangoes,Non-Citrus,Fresh,1987,0.56
+Mangoes,Non-Citrus,Fresh,1988,0.38
+Mangoes,Non-Citrus,Fresh,1989,0.51
+Mangoes,Non-Citrus,Fresh,1990,0.54
+Mangoes,Non-Citrus,Fresh,1991,0.85
+Mangoes,Non-Citrus,Fresh,1992,0.67
+Mangoes,Non-Citrus,Fresh,1993,0.89
+Mangoes,Non-Citrus,Fresh,1994,0.97
+Mangoes,Non-Citrus,Fresh,1995,1.12
+Mangoes,Non-Citrus,Fresh,1996,1.34
+Mangoes,Non-Citrus,Fresh,1997,1.44
+Mangoes,Non-Citrus,Fresh,1998,1.49
+Mangoes,Non-Citrus,Fresh,1999,1.62
+Mangoes,Non-Citrus,Fresh,2000,1.75
+Mangoes,Non-Citrus,Fresh,2001,1.79
+Mangoes,Non-Citrus,Fresh,2002,1.97
+Mangoes,Non-Citrus,Fresh,2003,2.06
+Mangoes,Non-Citrus,Fresh,2004,2.02
+Mangoes,Non-Citrus,Fresh,2005,1.88
+Mangoes,Non-Citrus,Fresh,2006,2.1
+Mangoes,Non-Citrus,Fresh,2007,2.1
+Mangoes,Non-Citrus,Fresh,2008,2.1
+Mangoes,Non-Citrus,Fresh,2009,2.02
+Mangoes,Non-Citrus,Fresh,2010,2.24
+Mangoes,Non-Citrus,Fresh,2011,2.53
+Mangoes,Non-Citrus,Fresh,2012,2.49
+Mangoes,Non-Citrus,Fresh,2013,2.87
+Mangoes,Non-Citrus,Fresh,2014,2.52
+Mangoes,Non-Citrus,Fresh,2015,2.6
+Mangoes,Non-Citrus,Fresh,2016,2.96
+Oranges,Citrus,Fresh,1980,14.28
+Oranges,Citrus,Fresh,1981,12.36
+Oranges,Citrus,Fresh,1982,11.69
+Oranges,Citrus,Fresh,1983,15.04
+Oranges,Citrus,Fresh,1984,11.87
+Oranges,Citrus,Fresh,1985,11.6
+Oranges,Citrus,Fresh,1986,13.43
+Oranges,Citrus,Fresh,1987,12.81
+Oranges,Citrus,Fresh,1988,13.9
+Oranges,Citrus,Fresh,1989,12.17
+Oranges,Citrus,Fresh,1990,12.37
+Oranges,Citrus,Fresh,1991,8.43
+Oranges,Citrus,Fresh,1992,12.84
+Oranges,Citrus,Fresh,1993,14.15
+Oranges,Citrus,Fresh,1994,12.94
+Oranges,Citrus,Fresh,1995,11.83
+Oranges,Citrus,Fresh,1996,12.58
+Oranges,Citrus,Fresh,1997,13.91
+Oranges,Citrus,Fresh,1998,14.61
+Oranges,Citrus,Fresh,1999,8.38
+Oranges,Citrus,Fresh,2000,11.74
+Oranges,Citrus,Fresh,2001,11.88
+Oranges,Citrus,Fresh,2002,11.74
+Oranges,Citrus,Fresh,2003,11.9
+Oranges,Citrus,Fresh,2004,10.8
+Oranges,Citrus,Fresh,2005,11.43
+Oranges,Citrus,Fresh,2006,10.24
+Oranges,Citrus,Fresh,2007,7.46
+Oranges,Citrus,Fresh,2008,9.93
+Oranges,Citrus,Fresh,2009,9.06
+Oranges,Citrus,Fresh,2010,9.68
+Oranges,Citrus,Fresh,2011,9.96
+Oranges,Citrus,Fresh,2012,10.47
+Oranges,Citrus,Fresh,2013,10.38
+Oranges,Citrus,Fresh,2014,9.38
+Oranges,Citrus,Fresh,2015,8.67
+Oranges,Citrus,Fresh,2016,9.17
+Papayas,Non-Citrus,Fresh,1980,0.21
+Papayas,Non-Citrus,Fresh,1981,0.22
+Papayas,Non-Citrus,Fresh,1982,0.16
+Papayas,Non-Citrus,Fresh,1983,0.18
+Papayas,Non-Citrus,Fresh,1984,0.26
+Papayas,Non-Citrus,Fresh,1985,0.18
+Papayas,Non-Citrus,Fresh,1986,0.18
+Papayas,Non-Citrus,Fresh,1987,0.19
+Papayas,Non-Citrus,Fresh,1988,0.16
+Papayas,Non-Citrus,Fresh,1989,0.14
+Papayas,Non-Citrus,Fresh,1990,0.18
+Papayas,Non-Citrus,Fresh,1991,0.17
+Papayas,Non-Citrus,Fresh,1992,0.24
+Papayas,Non-Citrus,Fresh,1993,0.28
+Papayas,Non-Citrus,Fresh,1994,0.3
+Papayas,Non-Citrus,Fresh,1995,0.37
+Papayas,Non-Citrus,Fresh,1996,0.54
+Papayas,Non-Citrus,Fresh,1997,0.47
+Papayas,Non-Citrus,Fresh,1998,0.47
+Papayas,Non-Citrus,Fresh,1999,0.62
+Papayas,Non-Citrus,Fresh,2000,0.68
+Papayas,Non-Citrus,Fresh,2001,0.78
+Papayas,Non-Citrus,Fresh,2002,0.79
+Papayas,Non-Citrus,Fresh,2003,0.87
+Papayas,Non-Citrus,Fresh,2004,1.03
+Papayas,Non-Citrus,Fresh,2005,0.94
+Papayas,Non-Citrus,Fresh,2006,1.04
+Papayas,Non-Citrus,Fresh,2007,1.08
+Papayas,Non-Citrus,Fresh,2008,0.98
+Papayas,Non-Citrus,Fresh,2009,1.2
+Papayas,Non-Citrus,Fresh,2010,1.17
+Papayas,Non-Citrus,Fresh,2011,1.05
+Papayas,Non-Citrus,Fresh,2012,0.97
+Papayas,Non-Citrus,Fresh,2013,1.12
+Papayas,Non-Citrus,Fresh,2014,1.14
+Papayas,Non-Citrus,Fresh,2015,1.33
+Papayas,Non-Citrus,Fresh,2016,1.43
+Peaches & Nectarines,Non-Citrus,Fresh,1980,7.08
+Peaches & Nectarines,Non-Citrus,Fresh,1981,6.87
+Peaches & Nectarines,Non-Citrus,Fresh,1982,5.35
+Peaches & Nectarines,Non-Citrus,Fresh,1983,5.43
+Peaches & Nectarines,Non-Citrus,Fresh,1984,6.7
+Peaches & Nectarines,Non-Citrus,Fresh,1985,5.5
+Peaches & Nectarines,Non-Citrus,Fresh,1986,5.84
+Peaches & Nectarines,Non-Citrus,Fresh,1987,6.05
+Peaches & Nectarines,Non-Citrus,Fresh,1988,6.75
+Peaches & Nectarines,Non-Citrus,Fresh,1989,5.86
+Peaches & Nectarines,Non-Citrus,Fresh,1990,5.54
+Peaches & Nectarines,Non-Citrus,Fresh,1991,6.41
+Peaches & Nectarines,Non-Citrus,Fresh,1992,6
+Peaches & Nectarines,Non-Citrus,Fresh,1993,5.85
+Peaches & Nectarines,Non-Citrus,Fresh,1994,5.42
+Peaches & Nectarines,Non-Citrus,Fresh,1995,5.33
+Peaches & Nectarines,Non-Citrus,Fresh,1996,4.38
+Peaches & Nectarines,Non-Citrus,Fresh,1997,5.51
+Peaches & Nectarines,Non-Citrus,Fresh,1998,4.69
+Peaches & Nectarines,Non-Citrus,Fresh,1999,5.29
+Peaches & Nectarines,Non-Citrus,Fresh,2000,5.3
+Peaches & Nectarines,Non-Citrus,Fresh,2001,5.16
+Peaches & Nectarines,Non-Citrus,Fresh,2002,5.23
+Peaches & Nectarines,Non-Citrus,Fresh,2003,5.17
+Peaches & Nectarines,Non-Citrus,Fresh,2004,5.15
+Peaches & Nectarines,Non-Citrus,Fresh,2005,4.83
+Peaches & Nectarines,Non-Citrus,Fresh,2006,4.58
+Peaches & Nectarines,Non-Citrus,Fresh,2007,4.46
+Peaches & Nectarines,Non-Citrus,Fresh,2008,5.08
+Peaches & Nectarines,Non-Citrus,Fresh,2009,4.41
+Peaches & Nectarines,Non-Citrus,Fresh,2010,4.73
+Peaches & Nectarines,Non-Citrus,Fresh,2011,4.47
+Peaches & Nectarines,Non-Citrus,Fresh,2012,3.86
+Peaches & Nectarines,Non-Citrus,Fresh,2013,3.01
+Peaches & Nectarines,Non-Citrus,Fresh,2014,3.26
+Peaches & Nectarines,Non-Citrus,Fresh,2015,3.02
+Peaches & Nectarines,Non-Citrus,Fresh,2016,2.86
+Pears,Non-Citrus,Fresh,1980,2.61
+Pears,Non-Citrus,Fresh,1981,2.82
+Pears,Non-Citrus,Fresh,1982,2.85
+Pears,Non-Citrus,Fresh,1983,2.99
+Pears,Non-Citrus,Fresh,1984,2.54
+Pears,Non-Citrus,Fresh,1985,2.79
+Pears,Non-Citrus,Fresh,1986,2.97
+Pears,Non-Citrus,Fresh,1987,3.51
+Pears,Non-Citrus,Fresh,1988,3.22
+Pears,Non-Citrus,Fresh,1989,3.2
+Pears,Non-Citrus,Fresh,1990,3.22
+Pears,Non-Citrus,Fresh,1991,3.14
+Pears,Non-Citrus,Fresh,1992,3.12
+Pears,Non-Citrus,Fresh,1993,3.35
+Pears,Non-Citrus,Fresh,1994,3.44
+Pears,Non-Citrus,Fresh,1995,3.36
+Pears,Non-Citrus,Fresh,1996,3.05
+Pears,Non-Citrus,Fresh,1997,3.39
+Pears,Non-Citrus,Fresh,1998,3.43
+Pears,Non-Citrus,Fresh,1999,3.53
+Pears,Non-Citrus,Fresh,2000,3.39
+Pears,Non-Citrus,Fresh,2001,3.25
+Pears,Non-Citrus,Fresh,2002,3.06
+Pears,Non-Citrus,Fresh,2003,3.08
+Pears,Non-Citrus,Fresh,2004,2.96
+Pears,Non-Citrus,Fresh,2005,2.91
+Pears,Non-Citrus,Fresh,2006,3.19
+Pears,Non-Citrus,Fresh,2007,3.09
+Pears,Non-Citrus,Fresh,2008,3.11
+Pears,Non-Citrus,Fresh,2009,3.19
+Pears,Non-Citrus,Fresh,2010,2.9
+Pears,Non-Citrus,Fresh,2011,3.21
+Pears,Non-Citrus,Fresh,2012,2.76
+Pears,Non-Citrus,Fresh,2013,2.84
+Pears,Non-Citrus,Fresh,2014,2.85
+Pears,Non-Citrus,Fresh,2015,2.66
+Pears,Non-Citrus,Fresh,2016,2.76
+Pineapples,Non-Citrus,Fresh,1980,1.5
+Pineapples,Non-Citrus,Fresh,1981,1.56
+Pineapples,Non-Citrus,Fresh,1982,1.66
+Pineapples,Non-Citrus,Fresh,1983,1.68
+Pineapples,Non-Citrus,Fresh,1984,1.51
+Pineapples,Non-Citrus,Fresh,1985,1.48
+Pineapples,Non-Citrus,Fresh,1986,1.73
+Pineapples,Non-Citrus,Fresh,1987,1.63
+Pineapples,Non-Citrus,Fresh,1988,1.76
+Pineapples,Non-Citrus,Fresh,1989,1.96
+Pineapples,Non-Citrus,Fresh,1990,2.05
+Pineapples,Non-Citrus,Fresh,1991,1.91
+Pineapples,Non-Citrus,Fresh,1992,1.99
+Pineapples,Non-Citrus,Fresh,1993,2.04
+Pineapples,Non-Citrus,Fresh,1994,2.02
+Pineapples,Non-Citrus,Fresh,1995,1.91
+Pineapples,Non-Citrus,Fresh,1996,1.9
+Pineapples,Non-Citrus,Fresh,1997,2.34
+Pineapples,Non-Citrus,Fresh,1998,2.75
+Pineapples,Non-Citrus,Fresh,1999,3.03
+Pineapples,Non-Citrus,Fresh,2000,3.22
+Pineapples,Non-Citrus,Fresh,2001,3.16
+Pineapples,Non-Citrus,Fresh,2002,3.82
+Pineapples,Non-Citrus,Fresh,2003,4.39
+Pineapples,Non-Citrus,Fresh,2004,4.43
+Pineapples,Non-Citrus,Fresh,2005,4.9
+Pineapples,Non-Citrus,Fresh,2006,5.2
+Pineapples,Non-Citrus,Fresh,2007,5.02
+Pineapples,Non-Citrus,Fresh,2008,5.07
+Pineapples,Non-Citrus,Fresh,2009,5.09
+Pineapples,Non-Citrus,Fresh,2010,5.7
+Pineapples,Non-Citrus,Fresh,2011,5.72
+Pineapples,Non-Citrus,Fresh,2012,6.42
+Pineapples,Non-Citrus,Fresh,2013,6.74
+Pineapples,Non-Citrus,Fresh,2014,7.19
+Pineapples,Non-Citrus,Fresh,2015,6.98
+Pineapples,Non-Citrus,Fresh,2016,7.28
+Plums and Prunes,Non-Citrus,Fresh,1980,1.54
+Plums and Prunes,Non-Citrus,Fresh,1981,1.71
+Plums and Prunes,Non-Citrus,Fresh,1982,1.07
+Plums and Prunes,Non-Citrus,Fresh,1983,1.41
+Plums and Prunes,Non-Citrus,Fresh,1984,1.84
+Plums and Prunes,Non-Citrus,Fresh,1985,1.43
+Plums and Prunes,Non-Citrus,Fresh,1986,1.29
+Plums and Prunes,Non-Citrus,Fresh,1987,1.91
+Plums and Prunes,Non-Citrus,Fresh,1988,1.72
+Plums and Prunes,Non-Citrus,Fresh,1989,1.41
+Plums and Prunes,Non-Citrus,Fresh,1990,1.54
+Plums and Prunes,Non-Citrus,Fresh,1991,1.42
+Plums and Prunes,Non-Citrus,Fresh,1992,1.77
+Plums and Prunes,Non-Citrus,Fresh,1993,1.27
+Plums and Prunes,Non-Citrus,Fresh,1994,1.6
+Plums and Prunes,Non-Citrus,Fresh,1995,0.93
+Plums and Prunes,Non-Citrus,Fresh,1996,1.43
+Plums and Prunes,Non-Citrus,Fresh,1997,1.51
+Plums and Prunes,Non-Citrus,Fresh,1998,1.18
+Plums and Prunes,Non-Citrus,Fresh,1999,1.28
+Plums and Prunes,Non-Citrus,Fresh,2000,1.19
+Plums and Prunes,Non-Citrus,Fresh,2001,1.33
+Plums and Prunes,Non-Citrus,Fresh,2002,1.26
+Plums and Prunes,Non-Citrus,Fresh,2003,1.24
+Plums and Prunes,Non-Citrus,Fresh,2004,1.12
+Plums and Prunes,Non-Citrus,Fresh,2005,1.11
+Plums and Prunes,Non-Citrus,Fresh,2006,1.02
+Plums and Prunes,Non-Citrus,Fresh,2007,1.01
+Plums and Prunes,Non-Citrus,Fresh,2008,0.92
+Plums and Prunes,Non-Citrus,Fresh,2009,0.73
+Plums and Prunes,Non-Citrus,Fresh,2010,0.78
+Plums and Prunes,Non-Citrus,Fresh,2011,0.87
+Plums and Prunes,Non-Citrus,Fresh,2012,0.62
+Plums and Prunes,Non-Citrus,Fresh,2013,0.51
+Plums and Prunes,Non-Citrus,Fresh,2014,0.58
+Plums and Prunes,Non-Citrus,Fresh,2015,0.64
+Plums and Prunes,Non-Citrus,Fresh,2016,0.82
+Strawberries,Non-Citrus,Fresh,1980,1.97
+Strawberries,Non-Citrus,Fresh,1981,2.17
+Strawberries,Non-Citrus,Fresh,1982,2.37
+Strawberries,Non-Citrus,Fresh,1983,2.32
+Strawberries,Non-Citrus,Fresh,1984,2.96
+Strawberries,Non-Citrus,Fresh,1985,2.99
+Strawberries,Non-Citrus,Fresh,1986,2.89
+Strawberries,Non-Citrus,Fresh,1987,3.12
+Strawberries,Non-Citrus,Fresh,1988,3.33
+Strawberries,Non-Citrus,Fresh,1989,3.25
+Strawberries,Non-Citrus,Fresh,1990,3.24
+Strawberries,Non-Citrus,Fresh,1991,3.57
+Strawberries,Non-Citrus,Fresh,1992,3.59
+Strawberries,Non-Citrus,Fresh,1993,3.62
+Strawberries,Non-Citrus,Fresh,1994,4.05
+Strawberries,Non-Citrus,Fresh,1995,4.1
+Strawberries,Non-Citrus,Fresh,1996,4.32
+Strawberries,Non-Citrus,Fresh,1997,4.1
+Strawberries,Non-Citrus,Fresh,1998,3.92
+Strawberries,Non-Citrus,Fresh,1999,4.57
+Strawberries,Non-Citrus,Fresh,2000,4.86
+Strawberries,Non-Citrus,Fresh,2001,4.21
+Strawberries,Non-Citrus,Fresh,2002,4.65
+Strawberries,Non-Citrus,Fresh,2003,5.29
+Strawberries,Non-Citrus,Fresh,2004,5.47
+Strawberries,Non-Citrus,Fresh,2005,5.83
+Strawberries,Non-Citrus,Fresh,2006,6.14
+Strawberries,Non-Citrus,Fresh,2007,6.26
+Strawberries,Non-Citrus,Fresh,2008,6.45
+Strawberries,Non-Citrus,Fresh,2009,7.17
+Strawberries,Non-Citrus,Fresh,2010,7.23
+Strawberries,Non-Citrus,Fresh,2011,7.36
+Strawberries,Non-Citrus,Fresh,2012,7.97
+Strawberries,Non-Citrus,Fresh,2013,8
+Strawberries,Non-Citrus,Fresh,2014,7.96
+Strawberries,Non-Citrus,Fresh,2015,7.72
+Strawberries,Non-Citrus,Fresh,2016,8.03
+Tangerines,Citrus,Fresh,1980,2.1
+Tangerines,Citrus,Fresh,1981,1.95
+Tangerines,Citrus,Fresh,1982,1.94
+Tangerines,Citrus,Fresh,1983,1.88
+Tangerines,Citrus,Fresh,1984,1.82
+Tangerines,Citrus,Fresh,1985,1.39
+Tangerines,Citrus,Fresh,1986,1.55
+Tangerines,Citrus,Fresh,1987,1.78
+Tangerines,Citrus,Fresh,1988,1.78
+Tangerines,Citrus,Fresh,1989,1.71
+Tangerines,Citrus,Fresh,1990,1.33
+Tangerines,Citrus,Fresh,1991,1.39
+Tangerines,Citrus,Fresh,1992,1.94
+Tangerines,Citrus,Fresh,1993,1.87
+Tangerines,Citrus,Fresh,1994,2.11
+Tangerines,Citrus,Fresh,1995,2
+Tangerines,Citrus,Fresh,1996,2.16
+Tangerines,Citrus,Fresh,1997,2.54
+Tangerines,Citrus,Fresh,1998,2.18
+Tangerines,Citrus,Fresh,1999,2.32
+Tangerines,Citrus,Fresh,2000,2.88
+Tangerines,Citrus,Fresh,2001,2.73
+Tangerines,Citrus,Fresh,2002,2.57
+Tangerines,Citrus,Fresh,2003,2.73
+Tangerines,Citrus,Fresh,2004,2.78
+Tangerines,Citrus,Fresh,2005,2.51
+Tangerines,Citrus,Fresh,2006,2.69
+Tangerines,Citrus,Fresh,2007,2.57
+Tangerines,Citrus,Fresh,2008,3.08
+Tangerines,Citrus,Fresh,2009,3.17
+Tangerines,Citrus,Fresh,2010,3.78
+Tangerines,Citrus,Fresh,2011,4.14
+Tangerines,Citrus,Fresh,2012,4.17
+Tangerines,Citrus,Fresh,2013,4.49
+Tangerines,Citrus,Fresh,2014,5
+Tangerines,Citrus,Fresh,2015,5.22
+Tangerines,Citrus,Fresh,2016,5.28
