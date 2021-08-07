@@ -1,0 +1,1 @@
+This is the branch you can use to test Powershell script for **AutomateAppUpdate** project. Contains a folder for Powrshell scripts
