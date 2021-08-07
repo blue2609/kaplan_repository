@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<ScriptFunctionDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Version Major="1" Minor="0" />
+  <Name>R_PCA</Name>
+  <Script>#Program R_PCA_Iris.R
+# Simple Random Forest model in R to be used in week 4 of DATA 4800
+#Author: Sanjeev Naguleswaran (original source #https://wilkelab.org/classes/SDS348/2016_spring/worksheets/class9.html )
+#Date: June 2020
+
+library(dplyr)
+
+iris &lt;-inTable
+
+iris %&gt;% select(-Species) %&gt;% # remove Species column
+  scale() %&gt;%                 # scale to 0 mean and unit variance
+  prcomp() -&gt;                 # do PCA
+  pca                         # store result as `pc
+  
+  pca_data &lt;- data.frame(pca$x, Species=iris$Species)
+  
+  pca$rotation
+
+#It tells us how much each variable contributes to each principal component. For example, #Sepal.Width contributes little to PC1 but makes up much of PC2. Often it is helpful to plot #the rotation matrix as arrows. This can be done as follows:
+
+# capture the rotation matrix in a data frame
+rotation_data &lt;- data.frame(pca$rotation, variable=row.names(pca$rotation))
+
+#Finally, we want to look at the percent variance explained. 
+#The prcomp() function gives us standard deviations (stored in pca$sdev). 
+#To convert them into percent variance explained, we square them and then divide by the sum over all squared standard deviations:
+
+percent &lt;- 100*pca$sdev^2/sum(pca$sdev^2)
+percent
+
+#The first component explains 73% of the variance, the second 23%, the third 4% and the last 0.5%. We can visualize these results nicely 
+#in a bar chart:
+
+perc_data &lt;- data.frame(percent=percent, PC=1:length(percent))</Script>
+  <Language>TERR</Language>
+  <Input>
+    <Name>inTable</Name>
+    <Type>Table</Type>
+    <DisplayName>inTable</DisplayName>
+    <Description />
+    <AllowedDataType>Double</AllowedDataType>
+    <AllowedDataType>Float</AllowedDataType>
+    <AllowedDataType>String</AllowedDataType>
+  </Input>
+  <Output>
+    <Name>perc_data</Name>
+    <Type>Table</Type>
+    <DisplayName>perc_data</DisplayName>
+    <Description />
+  </Output>
+  <Output>
+    <Name>rotation_data</Name>
+    <Type>Table</Type>
+    <DisplayName>rotation_data</DisplayName>
+    <Description />
+  </Output>
+  <Output>
+    <Name>pca_data</Name>
+    <Type>Table</Type>
+    <DisplayName>pca_data</DisplayName>
+    <Description />
+  </Output>
+  <Description />
+  <ApprovalStamp>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAmHQwj9l9dUKoEvUAIN4VOwAAAAACAAAAAAAQZgAAAAEAACAAAAA3uMnl7wmjOyxmpgXJrp/fmMWy1QuFLNb40UGKnuaxxwAAAAAOgAAAAAIAACAAAADvePyap/4Q/5gtMQ6JUTi3l7gWv6gprS0lzAKTGp35dpAAAADEL9uTVy7cIFF/J4snDvzI46+GmDMqDbn+LnTj3c1TN4yHMYKIP7cE5M4c/aoc8uWJO6EYrT+eRz0Rvi1CIuomIKv3TObEXjrgUD4pAF+LU4stMgqd0C6hyD7Hms/UU0Q6bg4chLOCGYeqGSW4tdcs4hQo6zmkSzCST5AQVacQb67uiYgnEEJkc/B69PuX1xBAAAAA215rwVtT8YtcKEKNrPmYC6xCPSMQYdUQSTs/qvEVGtAlHZesYyIhBaP/lYueCqTHXtGDGkx7ILJianalDJeDQg==</ApprovalStamp>
+  <AdditionalApprovalStamps />
+</ScriptFunctionDefinition>

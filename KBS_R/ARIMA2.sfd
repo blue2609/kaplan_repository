@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<ScriptFunctionDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Version Major="1" Minor="0" />
+  <Name>ARIMA2</Name>
+  <Script>library(RinR)
+
+ActualPathToOpenSourceR &lt;- "C:\\Program Files\\R\\R-3.6.1\\bin\\R.exe"
+
+options( RinR_R_FULL_PATH = ActualPathToOpenSourceR )
+
+values &lt;- BigCat$Values
+
+forecast &lt;- RinR::REvaluate(
+	data = list(values = values),
+	expr = 
+	{
+		library(forecast)
+			
+		# convert data to time series so seasonality (12) can be specified
+		ts_values = ts(values, frequency = 12)
+			
+		fit &lt;- auto.arima(ts_values)
+
+		values_forecast &lt;- forecast(fit, 96)
+		
+		values_fitted &lt;- values_forecast$mean
+		values_original_fitted &lt;- values_forecast$fitted
+		values_x &lt;- values_forecast$x
+		upper_95 &lt;- values_forecast$upper[,1]
+		lower_95 &lt;- values_forecast$lower[,1]
+
+		# return objects
+		list(values_fitted = values_fitted,
+				values_original_fitted = values_original_fitted,
+				values_x = values_x,
+				upper_95 = upper_95,
+				lower_95 = lower_95)
+	}
+)
+
+fitted &lt;- forecast[["values_original_fitted"]]
+future &lt;- forecast[["values_fitted"]]
+original &lt;- forecast[["values_x"]]
+future_upper_95 &lt;- forecast[["upper_95"]]
+future_lower_95 &lt;- forecast[["lower_95"]]
+
+predicted &lt;- rep(NA, 96)
+upper_95 &lt;- rep(NA, 96)
+lower_95 &lt;- rep(NA, 96)
+new_dates &lt;- BigCat$Month
+
+if(run_forecast) 
+{
+if(0)
+{
+new_dates &lt;- c(new_dates, 
+"2020-01", "2020-02", "2020-03", "2020-04", "2020-05", "2020-06",
+"2020-07", "2020-08", "2020-09", "2020-10", "2020-11", "2020-12",
+"2021-01", "2021-02", "2021-03", "2021-04", "2021-05", "2021-06",
+"2021-07", "2021-08", "2021-09", "2021-10", "2021-11", "2021-12",
+"2022-01", "2022-02", "2022-03", "2022-04", "2022-05", "2022-06",
+"2022-07", "2022-08", "2022-09", "2022-10", "2022-11", "2022-12")
+}
+for (i in future) predicted &lt;- c(predicted, i)
+for (i in future_upper_95) upper_95 &lt;- c(upper_95, i)
+for (i in future_lower_95) lower_95 &lt;- c(lower_95, i)
+
+for (i in 1:14) original &lt;- c(original, NA)
+for (i in 1:14) fitted &lt;- c(fitted, NA)
+} else {
+	fitted &lt;- rep(NA, 96)
+}
+
+# convert dates to the R data type that Spotfire will see as datetime
+#dates_typed &lt;- as.POSIXct(new_dates, format="%Y-%m")
+
+#predicted_values &lt;- data.frame(predicted, original, upper_95, lower_95, fitted)
+
+predicted_values &lt;- data.frame(predicted, original, upper_95, lower_95,fitted)</Script>
+  <Language>TERR</Language>
+  <Input>
+    <Name>BigCat</Name>
+    <Type>Table</Type>
+    <DisplayName>BigCat</DisplayName>
+    <Description />
+    <AllowedDataType>Integer</AllowedDataType>
+    <AllowedDataType>Double</AllowedDataType>
+  </Input>
+  <Output>
+    <Name>predicted_values</Name>
+    <Type>Table</Type>
+    <DisplayName>Predicted_Values</DisplayName>
+    <Description />
+  </Output>
+  <Description>Trying to generalise the passenger example to DATA 4400 Week 8</Description>
+  <ApprovalStamp>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZXlQTTmSlkWHyCRKtxZyswAAAAACAAAAAAADZgAAwAAAABAAAAAMDgD9d/cVcM474vuh9k9dAAAAAASAAACgAAAAEAAAAN7k7ouriPcj283gjdEzd22IAAAASfnAGtdN//5FnnEhtpRh5mMXtV5feRmxr+26prHdfA2XxbddxECSygwxa9cUzZ7sg3SReffKcDnDsbqnPuhd6gqXOb1XlLFdGwknoFkO+UPkJZcIF22xaLdXKrBHJxkAleE85MCNK6xmYhsDJU2EkV4LYsqtMLawRf00v85WNzqjIgvi1mhdrhQAAABe3XF9Rk4QzXNJ8QN+NLsHyHnpUg==</ApprovalStamp>
+  <AdditionalApprovalStamps />
+</ScriptFunctionDefinition>

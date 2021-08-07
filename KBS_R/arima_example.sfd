@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<ScriptFunctionDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Version Major="1" Minor="0" />
+  <Name>arima_example</Name>
+  <Script>library(RinR)
+
+ActualPathToOpenSourceR &lt;- "C:\\Program Files\\R\\R-3.6.1\\bin\\R.exe"
+
+options( RinR_R_FULL_PATH = ActualPathToOpenSourceR )
+
+passengers &lt;- passengers_by_month$passengers
+
+forecast &lt;- RinR::REvaluate(
+	data = list(passengers = passengers),
+	expr = 
+	{
+		library(forecast)
+			
+		# convert data to time series so seasonality (12) can be specified
+		ts_passengers = ts(passengers, frequency = 12)
+			
+		fit &lt;- auto.arima(ts_passengers)
+
+		passenger_forecast &lt;- forecast(fit, 36)
+		
+		passenger_fitted &lt;- passenger_forecast$mean
+		passenger_original_fitted &lt;- passenger_forecast$fitted
+		passenger_x &lt;- passenger_forecast$x
+		upper_95 &lt;- passenger_forecast$upper[,1]
+		lower_95 &lt;- passenger_forecast$lower[,1]
+
+		# return objects
+		list(passenger_fitted = passenger_fitted,
+				passenger_original_fitted = passenger_original_fitted,
+				passenger_x = passenger_x,
+				upper_95 = upper_95,
+				lower_95 = lower_95)
+	}
+)
+
+fitted &lt;- forecast[["passenger_original_fitted"]]
+future &lt;- forecast[["passenger_fitted"]]
+original &lt;- forecast[["passenger_x"]]
+future_upper_95 &lt;- forecast[["upper_95"]]
+future_lower_95 &lt;- forecast[["lower_95"]]
+
+predicted &lt;- rep(NA, 144)
+upper_95 &lt;- rep(NA, 144)
+lower_95 &lt;- rep(NA, 144)
+new_dates &lt;- passengers_by_month$Month
+
+if (run_forecast) 
+{
+
+new_dates &lt;- c(new_dates, 
+"2020-01", "2020-02", "2020-03", "2020-04", "2020-05", "2020-06",
+"2020-07", "2020-08", "2020-09", "2020-10", "2020-11", "2020-12",
+"2021-01", "2021-02", "2021-03", "2021-04", "2021-05", "2021-06",
+"2021-07", "2021-08", "2021-09", "2021-10", "2021-11", "2021-12",
+"2022-01", "2022-02", "2022-03", "2022-04", "2022-05", "2022-06",
+"2022-07", "2022-08", "2022-09", "2022-10", "2022-11", "2022-12")
+
+for (i in future) predicted &lt;- c(predicted, i)
+for (i in future_upper_95) upper_95 &lt;- c(upper_95, i)
+for (i in future_lower_95) lower_95 &lt;- c(lower_95, i)
+
+for (i in 1:36) original &lt;- c(original, NA)
+for (i in 1:36) fitted &lt;- c(fitted, NA)
+} else {
+	fitted &lt;- rep(NA, 144)
+}
+
+# convert dates to the R data type that Spotfire will see as datetime
+dates_typed &lt;- as.POSIXct(new_dates, format="%Y-%m")
+
+predicted_values &lt;- data.frame(dates_typed, predicted, original, upper_95, lower_95, fitted)</Script>
+  <Language>TERR</Language>
+  <Input>
+    <Name>passengers_by_month</Name>
+    <Type>Table</Type>
+    <DisplayName>passengers_by_month</DisplayName>
+    <Description />
+    <AllowedDataType>Integer</AllowedDataType>
+    <AllowedDataType>Double</AllowedDataType>
+    <AllowedDataType>Float</AllowedDataType>
+    <AllowedDataType>Decimal</AllowedDataType>
+    <AllowedDataType>String</AllowedDataType>
+    <AllowedDataType>Date</AllowedDataType>
+    <AllowedDataType>Time</AllowedDataType>
+    <AllowedDataType>DateTime</AllowedDataType>
+    <AllowedDataType>Bool</AllowedDataType>
+    <AllowedDataType>Binary</AllowedDataType>
+    <AllowedDataType>Long</AllowedDataType>
+  </Input>
+  <Input>
+    <Name>run_forecast</Name>
+    <Type>Value</Type>
+    <DisplayName>run_forecast</DisplayName>
+    <Description />
+    <AllowedDataType>Bool</AllowedDataType>
+  </Input>
+  <Output>
+    <Name>predicted_values</Name>
+    <Type>Table</Type>
+    <DisplayName>predicted_values</DisplayName>
+    <Description />
+  </Output>
+  <Description />
+  <ApprovalStamp>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAFhbnZSX6B0GMCNcfWpw4GwAAAAACAAAAAAADZgAAwAAAABAAAAAD2HfVPJKpH6Q+H8LSoffyAAAAAASAAACgAAAAEAAAAI764EQCIIuMYH0k2CCuVECIAAAA60QdEKru1cd7IwXSaW2j5zR2L7+UZxrSI1YJWY7AhS4xBuLhpIsa/8ik0fM6NP86VXhyehMVe/YjjzcYqCviJyNoEt52d5W72fDdSaYAEGco8Uhu/A7sirg8baWldCdtXbMMazt+fZiS5HzZHqq79/44pWrugwxZKMM3/fh66SxzHU1h7F4TURQAAACHrCPB615O2DDrG58Qf5c0NOS8Xg==</ApprovalStamp>
+  <AdditionalApprovalStamps>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAuCSvpaQhf0OOH0GqzuC1mwAAAAACAAAAAAADZgAAwAAAABAAAABaLkjrSOUAmG9RsJk2rGWWAAAAAASAAACgAAAAEAAAAGgfaALDQYu+nC/1wTwufwWIAAAAB45mTZm2fIvVuc3drHIZgE61SzyUlqoSnBwTZ7c2XaqHyOkvszv9+bTOSzb7FxuSkJQtzzA2k+E4AJmr9K9KF8TS2l5P24QZZF8T1i/k2JKBUAkNWdi8p7gmtdjlChZGBhNGCU2KzlgtUH2attC34EFxs0gWIYbZogu+2UH+RwlML2cnO2MWmBQAAAC7LwxUjgo6it9vSD3JsQXlIy7FvA==,AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZXlQTTmSlkWHyCRKtxZyswAAAAACAAAAAAADZgAAwAAAABAAAACgpY7qJBV1Grug6UuidQ43AAAAAASAAACgAAAAEAAAAHJb2ueppOHo6Bd8pmBWxUKIAAAA6Tutm9xRcMeqOMdqVZB7H2YeTyZKMKoVyTw349nqkCLc7ZrEuvd2msTe/AMNg54R02TzYvZHeMs75UnQuVQw9xE029kI4GweWhTCXjOmS6f5/wJdsCnAbdl4lvh+B+6kEqxW7dpc3cVdHpflxYDIqfAWUMmkPY4sQYfB6M4oVofaI6nLx39ehhQAAADgvSorboAOPWewBJQNo2h5DeEvaw==</AdditionalApprovalStamps>
+</ScriptFunctionDefinition>

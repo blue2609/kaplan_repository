@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<ScriptFunctionDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Version Major="1" Minor="0" />
+  <Name>R_RF_Iris</Name>
+  <Script>#Program R_RF_Iris.R
+# Simple Random Forest model in R to be used in week 3 of DATA 4800
+#Author: Sanjeev Naguleswaran
+#Date: June 2020
+
+
+#install.packages("randomForest")
+#install.packages("Mass")
+#install.packages("caret")
+
+library(randomForest)
+
+#library(datasets)
+#data(iris)
+#head(iris)
+
+#library(MASS)
+#library(caret)
+
+iris &lt;-inTable
+
+# USe the set.seed function so that we get same results each time
+set.seed(123)
+
+
+# Splitting data into training and testing. As the species are in order
+# splitting the data based on species
+iris_setosa &lt;- iris[iris$Species == "setosa", ] # 50
+iris_versicolor &lt;- iris[iris$Species == "versicolor", ] # 50
+iris_virginica &lt;- iris[iris$Species == "virginica", ] # 50
+iris_train &lt;-
+  rbind(iris_setosa[1:25, ], iris_versicolor[1:25, ], iris_virginica[1:25, ])
+iris_test &lt;-
+  rbind(iris_setosa[26:50, ], iris_versicolor[26:50, ], iris_virginica[26:50, ])
+
+rf &lt;- randomForest(as.factor(Species) ~ ., data = iris_train)
+rf  # Description of the random forest with no of trees, mtry = no of variables for splitting
+
+# each tree node.
+# Out of bag estimate of error rate is 4 % in Random Forest Model.
+attributes(rf)
+pred1 &lt;- predict(rf, iris_train)
+
+# Sensitivity for all three species/categories is 100 %
+
+# Prediction with test data - Test Data
+pred2 &lt;- predict(rf, iris_test)
+#confusionMatrix(pred2, iris_test$Species) # 94,67 % accuracy on test data
+# Error Rate in Random Forest Model :
+#plot(rf)
+
+
+
+# Calculate the probability of new observations belonging to each class
+# prediction_for_roc_curve will be a matrix with dimensions data_set_size x number_of_classes
+Probability &lt;- as.data.frame(predict(rf, iris_test[, -5], type = "prob"))
+
+# Create Confusion Matrix
+Frequency &lt;- table(iris_test$Species,pred2)
+</Script>
+  <Language>TERR</Language>
+  <Input>
+    <Name>inTable</Name>
+    <Type>Table</Type>
+    <DisplayName>inTable</DisplayName>
+    <Description />
+    <AllowedDataType>Double</AllowedDataType>
+    <AllowedDataType>Float</AllowedDataType>
+    <AllowedDataType>String</AllowedDataType>
+  </Input>
+  <Output>
+    <Name>Frequency</Name>
+    <Type>Table</Type>
+    <DisplayName>Frequency</DisplayName>
+    <Description />
+  </Output>
+  <Output>
+    <Name>Probability</Name>
+    <Type>Table</Type>
+    <DisplayName>Probability</DisplayName>
+    <Description />
+  </Output>
+  <Description />
+  <AllowCaching>false</AllowCaching>
+  <ApprovalStamp>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAmHQwj9l9dUKoEvUAIN4VOwAAAAACAAAAAAAQZgAAAAEAACAAAADnIQ4Bfm34y53b+LNz/4eOHm6d0iWCSJHfjakzkQ6NIQAAAAAOgAAAAAIAACAAAAA8RofVw8Ef5kQ6sj0v4Xvs+oKU0wjiz83qXCqy6FMvTJAAAAAJJfsItMQuYZaIgFSLFthY+19j/DDdGz/oiFVKmKR/vXT2KXC2zr5cgoJxrYSCs2WP/w5a1M++lKEQEwf9ZUnojGFfzc35JMxQ7gziSIa1j3bBkD6Y+/9HmxGIJYERMP2ZiaOEgfpo5Y9tMWQs+r8W0tHMqWDz1WJR3dBZ1A5EtfxtUrWi8TWGlm3gpIC+N7RAAAAA6CmKoZ7+t21lj4MWxY6OEeIEHlD5PJngyaQijWOVQI+dUGwKMyFfm4hQzzBL70D1OY9mJo8bXfqlBjT9zPXLsw==</ApprovalStamp>
+  <AdditionalApprovalStamps />
+</ScriptFunctionDefinition>
