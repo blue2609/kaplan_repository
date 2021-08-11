@@ -99,9 +99,21 @@ def getSQLTableStructure(dataframe):
         elif 'string' == namedTupleObj.dataType:
 
             # get the max number of bytes required for this column
-            # maxByteSize = dataframe[columnName].apply(lambda eachString: len(eachString.encode('UTF-8'))).max()
-            maxByteSize = dataframe[columnName].apply(lambda eachValue: len(str(eachValue).encode('UTF-8'))).max()
-            sqlDataType = f'varchar({maxByteSize})'
+            max_col_size = dataframe[columnName].apply(
+                                    lambda eachValue: len(str(eachValue).encode('UTF-8'))
+                                ).max()
+
+            # check if all rows in the column are of the same string length 
+            all_column_same_size = dataframe[columnName].apply(
+                                            lambda eachValue: len(str(eachValue).encode('UTF-8')) == max_col_size
+                                        ).all()
+
+            
+            if all_column_same_size:
+                sqlDataType = f'char({max_col_size})'
+            else:
+                max_col_size = ((max_col_size * 2) + 9) // 10 * 10
+                sqlDataType = f'varchar({max_col_size})'
 
             # need more functionality here to detect fixed string column
 
@@ -219,7 +231,7 @@ def createSQLTable(dataframeObject,sqlTableName):
     # -- Create the table -- 
     # createTableString = createTableQueryString(dbName,schema,tableName,getSQLTableStructure(dataframeObject)[0])
         createTableString = createTableQueryString(dbName,schema,sqlTableName,getSQLTableStructure(dataframeObject)[0])
-        print(createTableString)
+        # print(createTableString)
         try:
             cursor.execute(createTableString)
             cursor.commit()
