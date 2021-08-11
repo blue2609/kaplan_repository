@@ -245,25 +245,12 @@ def createSQLTable(dataframeObject,sqlTableName):
         no_of_split = int(np.ceil(dataframeObject.shape[0]/ 500))
         dataframe_chunks = np.array_split(dataframeObject,no_of_split)
 
-        # for each_dataframe in dataframe_chunks:
-        #     # insertValueString = insertValuesQueryString(dbName,schema,tableName,each_dataframe)
-        #     insertValueString = insertValuesQueryString(dbName,schema,sqlTableName,each_dataframe)
-        #     # print(insertValueString)
-
-        #     # THIS IS JUST FOR DEBUGGING!
-        #     with open('insertValueQuery.sql','w') as queryFile:
-        #         queryFile.write(insertValueString)
 
         for index,each_dataframe in enumerate(dataframe_chunks):
             # insertValueString = insertValuesQueryString(dbName,schema,tableName,each_dataframe)
             insertValueString = insertValuesQueryString(dbName,schema,sqlTableName,each_dataframe)
-            # print(insertValueString)
 
-            # # THIS IS JUST FOR DEBUGGING!
-            # with open(f'insertValueQuery_{index}.sql','w') as queryFile:
-            #     queryFile.write(insertValueString)
             try:
-                # print('test')
                 cursor.execute(insertValueString)
                 cursor.commit()
             except pyodbc.ProgrammingError as pyodbcProgrammingError:
@@ -287,12 +274,13 @@ def create_table_from_excel(excel_file_path,root_dir_name,fileName):
         if not dataframeObject.empty:
             sheetName = re.sub('_{2,}','_',re.sub('\s+|-+','_',sheetName))
             sheetName = re.sub('\(|\)','',sheetName)
-            fileName = Path(re.sub('_{2,}','_',re.sub('\s+|-+','_',fileName))).stem.upper()
+            fileName = Path(re.sub('_{2,}','_',re.sub('\s+|-+','_',excel_file_path))).stem.upper()
             sqlTableName = root_dir_name + '_' + fileName + '_' + sheetName
 
             createSQLTable(dataframeObject,sqlTableName)
 
 def create_table_from_csv(csv_file_path,root_dir_name,fileName,scanFolder=False):
+
     # read the first 100KB of the file to 
     # detect the encoding of the file 
     with open(csv_file_path,'rb') as file:
