@@ -276,6 +276,54 @@ def createSQLTable(dataframeObject,sqlTableName):
     cursor.close()
     conn.close()
 
+# ===========================================================
+# Generate SQL Server Table from an excel file
+# =========================================================
+def create_table_from_excel(excel_file_path,root_dir_name,fileName):
+    excelFile = pd.ExcelFile(excel_file_path)
+    for sheetName in excelFile.sheet_names:
+
+        dataframeObject = excelFile.parse(sheet_name=sheetName)
+        if not dataframeObject.empty:
+            sheetName = re.sub('_{2,}','_',re.sub('\s+|-+','_',sheetName))
+            sheetName = re.sub('\(|\)','',sheetName)
+            fileName = Path(re.sub('_{2,}','_',re.sub('\s+|-+','_',fileName))).stem.upper()
+            sqlTableName = root_dir_name + '_' + fileName + '_' + sheetName
+
+            createSQLTable(dataframeObject,sqlTableName)
+
+def create_table_from_csv(csv_file_path,root_dir_name,fileName,scanFolder=False):
+    # read the first 100KB of the file to 
+    # detect the encoding of the file 
+    with open(csv_file_path,'rb') as file:
+        detectedEncoding = chardet.detect(file.read(100000))['encoding']
+
+    try:
+        dataframeObject = pd.read_csv(csv_file_path,encoding=detectedEncoding)
+
+    # =======================================
+    # print errors and do return the function
+    # =======================================
+    except pd.io.common.ParserError as dfStructureError:
+        print(f'{csv_file_path} has error in its table structure')
+        print(str(dfStructureError))
+        return
+        
+    except UnicodeDecodeError as encodingError:
+        print(f'{csv_file_path} has error in encoding')
+        print(encodingError)
+        return
+
+    except pd.io.common.EmptyDataError:
+        print(f'{csv_file_path} is empty')
+        return
+        
+    # in case where scanFolder == True, don't create a SQL Table
+    if scanFolder == False:
+        fileName = re.sub('_{2,}','_',re.sub('\s+|-+','_',Path(csv_file_path).stem))
+        sqlTableName = root_dir_name + '_' + fileName 
+
+        createSQLTable(dataframeObject,sqlTableName) 
 
 #================================================
 # CREATING A TEST Dataframe
@@ -292,6 +340,8 @@ def createSQLTable(dataframeObject,sqlTableName):
 # test_df['Column_8'] = [3.5,0.05,999.4,None]
 # test_df['Column_9'] = ['15:00','03:00','09:00',None]
 # test_df['Column_10'] = ['   ',' stanley this ',' ',"\n \t some'String"] 
+
+
 
 # --------------------------------
 # main part of the program
@@ -313,51 +363,12 @@ def main():
             subjectName = re.sub('\s+','',subjectName).upper()
 
             if re.search('\.xlsx$|\.xls$',args.filePath):
-                excelFile = pd.ExcelFile(args.filePath)
-                for sheetName in excelFile.sheet_names:
+                create_table_from_excel(args.filePath,subjectName)
 
-                    dataframeObject = excelFile.parse(sheet_name=sheetName)
-                    if not dataframeObject.empty:
-                        sheetName = re.sub('_{2,}','_',re.sub('\s+|-+','_',sheetName))
-                        sheetName = re.sub('\(|\)','',sheetName)
-                        fileName = Path(re.sub('_{2,}','_',re.sub('\s+|-+','_',args.filePath))).stem.upper()
-                        sqlTableName = subjectName + '_' + fileName + '_' + sheetName
-
-                        createSQLTable(dataframeObject,sqlTableName)
-            
             # -- if the file is a csv file, execute this code block below
             if re.search('\.csv$',args.filePath):
-
-                # read the first 100KB of the file to 
-                # detect the encoding of the file 
-                with open(args.filePath,'rb') as file:
-                    detectedEncoding = chardet.detect(file.read(100000))['encoding']
-
-                try:
-                    dataframeObject = pd.read_csv(args.filePath,encoding=detectedEncoding)
-
-                except pd.io.common.ParserError as dfStructureError:
-                    print(f'{args.filePath} has error in its table structure')
-                    print(str(dfStructureError))
-                    return
-                except UnicodeDecodeError as encodingError:
-                    print(f'{args.filePath} has error in encoding')
-                    print(encodingError)
-                    return
-
-                # if file is empty, go to the next file
-                except pd.io.common.EmptyDataError:
-                    print(f'{args.filePath} is empty')
-                    return
-                    
-                fileName = re.sub('_{2,}','_',re.sub('\s+|-+','_',Path(args.filePath).stem))
-                sqlTableName = subjectName + '_' + fileName 
-
-                createSQLTable(dataframeObject,sqlTableName) 
-        
-
-
-
+                create_table_from_csv(args.filePath,subjectName)
+                
     else:
         if os.path.exists(args.folderPath) and os.path.isdir(args.folderPath):
             subjectName = os.path.basename(os.path.normpath(args.folderPath))
@@ -376,76 +387,18 @@ def main():
                         if args.scanFolder:
                             if re.search('\.csv$',fileName):
                                 filePath = os.path.join(currentPath,fileName)
-
-                                # read the first 100KB of the file to 
-                                # detect the encoding of the file 
-                                with open(filePath,'rb') as file:
-                                    detectedEncoding = chardet.detect(file.read(100000))['encoding']
-
-                                try:
-                                    pd.read_csv(filePath,encoding=detectedEncoding)
-
-                                except pd.io.common.ParserError as dfStructureError:
-                                    print(f'{filePath} has error in its table structure')
-                                    print(str(dfStructureError))
-                                    continue 
-
-                                except UnicodeDecodeError as encodingError:
-                                    print(f'{filePath} has error in encoding')
-                                    print(encodingError)
-                                    continue 
-
-                                except pd.io.common.EmptyDataError:
-                                    print(f'{filePath} is empty')
-                                    continue 
+                                create_table_from_csv(filePath,subjectName,fileName,scanFolder=True)
 
                         else:
                             #  -- if the file is an excel file, execute this code block below -- 
                             if re.search('\.xlsx$|\.xls$',fileName):
                                 filePath = os.path.join(currentPath,fileName)
-                                excelFile = pd.ExcelFile(filePath)
-                                for sheetName in excelFile.sheet_names:
-
-                                    dataframeObject = excelFile.parse(sheet_name=sheetName)
-                                    if not dataframeObject.empty:
-                                        sheetName = re.sub('_{2,}','_',re.sub('\s+|-+','_',sheetName))
-                                        sheetName = re.sub('\(|\)','',sheetName)
-                                        fileName = Path(re.sub('_{2,}','_',re.sub('\s+|-+','_',fileName))).stem.upper()
-                                        sqlTableName = subjectName + '_' + fileName + '_' + sheetName
-
-                                        createSQLTable(dataframeObject,sqlTableName)
+                                create_table_from_excel(filePath,subjectName,fileName)
                             
                             # -- if the file is a csv file, execute this code block below
                             if re.search('\.csv$',fileName):
                                 filePath = os.path.join(currentPath,fileName)
-
-                                # read the first 100KB of the file to 
-                                # detect the encoding of the file 
-                                with open(filePath,'rb') as file:
-                                    detectedEncoding = chardet.detect(file.read(100000))['encoding']
-
-                                try:
-                                    dataframeObject = pd.read_csv(filePath,encoding=detectedEncoding)
-
-                                except pd.io.common.ParserError as dfStructureError:
-                                    print(f'{filePath} has error in its table structure')
-                                    print(str(dfStructureError))
-                                    continue 
-                                except UnicodeDecodeError as encodingError:
-                                    print(f'{filePath} has error in encoding')
-                                    print(encodingError)
-                                    continue 
-
-                                # if file is empty, go to the next file
-                                except pd.io.common.EmptyDataError:
-                                    print(f'{filePath} is empty')
-                                    continue
-                                    
-                                fileName = re.sub('_{2,}','_',re.sub('\s+|-+','_',Path(fileName).stem))
-                                sqlTableName = subjectName + '_' + fileName 
-
-                                createSQLTable(dataframeObject,sqlTableName)
-
+                                create_table_from_csv(filePath,subjectName,fileName)
         else:
             print("The directory doesn't exist or the path specified is not a directory")
             exit()
