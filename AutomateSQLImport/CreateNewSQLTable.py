@@ -3,13 +3,17 @@ import pandas as pd
 import numpy as np
 import chardet
 # import subprocess
+from pprint import pprint
 import re
 import pyodbc
 from collections import namedtuple
 import numpy as np
 import argparse
+from csv import DictWriter, excel_tab
 from pathlib import Path
 import os
+
+OUTPUT_LOG = 'OUTPUT_LOG'
 
 #================================================
 # Function Definitions
@@ -209,7 +213,11 @@ def insertValuesQueryString(dbName,schema,tableName,dataframe):
 
 def createSQLTable(dataframeObject,sqlTableName):
 
-    error_category,error_message = None,None
+    sql_table_creation_log = {
+        'sql_error_category':None,
+        'sql_error_message':None,
+        'sql_table_name':None
+    }
 
     ######################################################### 
     # Connect to Microsoft SQL Server
@@ -239,13 +247,11 @@ def createSQLTable(dataframeObject,sqlTableName):
             cursor.commit()
 
         except pyodbc.ProgrammingError as pyodbcProgrammingError:
-            error_category = f'SQL Table Creation Error: {sqlTableName}'
-            error_message = pyodbcProgrammingError
-            # print()
-            # print(pyodbcProgrammingError)
+            sql_table_creation_log['sql_error_category'] = 'SQL Table Creation'
+            sql_table_creation_log['sql_error_message'] = pyodbcProgrammingError
             cursor.close()
             conn.close()
-            return error_category,error_message
+            return sql_table_creation_log
 
         # create a list of dataframes in chunks
         no_of_split = int(np.ceil(dataframeObject.shape[0]/ 500))
@@ -260,36 +266,76 @@ def createSQLTable(dataframeObject,sqlTableName):
                 cursor.execute(insertValueString)
                 cursor.commit()
             except pyodbc.ProgrammingError as pyodbcProgrammingError:
-                error_category = f'SQL Table Insert Value Error: {sqlTableName}'
-                error_message = pyodbcProgrammingError
-                # print(errorCategory)
-                # print(pyodbcProgrammingError)
+                sql_table_creation_log['sql_error_category'] = 'SQL Insert Value'
+                sql_table_creation_log['sql_error_message'] = pyodbcProgrammingError
                 cursor.close()
                 conn.close()
-                return error_category,error_message
+                return sql_table_creation_log
 
     cursor.close()
     conn.close()
-
-    return error_category,error_message # should return None, None if this line is executed
+    sql_table_creation_log['sql_table_name'] = sqlTableName
+    return sql_table_creation_log  # should return None, None if this line is executed
 
 # ===========================================================
 # Generate SQL Server Table from an excel file
 # =========================================================
-def create_table_from_excel(excel_file_path,root_dir_name,fileName):
+def create_table_from_excel(excel_file_path,root_dir_name):
+    fileName = Path(re.sub('_{2,}','_',re.sub('\s+|-+','_',excel_file_path))).stem.upper()
+
+    excel_table_creation_log = {
+       'excel_error_category':None,
+       'excel_error_message':None ,
+       'file_name':f'{fileName}.xlsx',
+       'file_path':excel_file_path,
+       'root_dir_name':root_dir_name,
+       'sheet_name':None
+    }
+    
     excelFile = pd.ExcelFile(excel_file_path)
     for sheetName in excelFile.sheet_names:
 
         dataframeObject = excelFile.parse(sheet_name=sheetName)
+        sheetName = re.sub('_{2,}','_',re.sub('\s+|-+','_',sheetName))
+        sheetName = re.sub('\(|\)','',sheetName)
+        excel_table_creation_log['sheet_name'] = sheetName
+
         if not dataframeObject.empty:
-            sheetName = re.sub('_{2,}','_',re.sub('\s+|-+','_',sheetName))
-            sheetName = re.sub('\(|\)','',sheetName)
-            fileName = Path(re.sub('_{2,}','_',re.sub('\s+|-+','_',excel_file_path))).stem.upper()
+
             sqlTableName = root_dir_name + '_' + fileName + '_' + sheetName
+            sql_table_creation_log = createSQLTable(dataframeObject,sqlTableName)
+            excel_table_creation_log.update(sql_table_creation_log)
 
-            createSQLTable(dataframeObject,sqlTableName)
+        return excel_table_creation_log
 
-def create_table_from_csv(csv_file_path,root_dir_name,fileName,scanFolder=False):
+# ===========================================================
+# Output the creation of dataframe object into a log file 
+# =========================================================
+# def dataframe_creation_log(file_path,df_creation_dict):
+#     if not os.path.exists(file_path):
+#         with open(OUTPUT_LOG,'a+') as output_log:
+#             dict_writer_obj = DictWriter(output_log,df_creation_dict.keys())
+#             dict_writer_obj.writeheader()
+
+#     with open(OUTPUT_LOG,'a+') as output_log:
+#         dict_writer_obj = DictWriter(output_log,df_creation_dict.keys())
+#         dict_writer_obj.writerow(df_creation_dict)
+        
+# ===========================================================
+# Generate SQL Server Table from a CSV file
+# =========================================================
+def create_table_from_csv(csv_file_path,root_dir_name,scanFolder=False):
+
+    fileName = re.sub('_{2,}','_',re.sub('\s+|-+','_',Path(csv_file_path).stem))
+
+    # create a dictionary to keep track of success and errors
+    csv_table_creation_log = {
+       'csv_error_category':None,
+       'csv_error_message':None ,
+       'file_name':f'{fileName}.csv',
+       'file_path':csv_file_path,
+       'root_dir_name':root_dir_name,
+    }
 
     # read the first 100KB of the file to 
     # detect the encoding of the file 
@@ -303,25 +349,30 @@ def create_table_from_csv(csv_file_path,root_dir_name,fileName,scanFolder=False)
     # print errors and do return the function
     # =======================================
     except pd.io.common.ParserError as dfStructureError:
-        print(f'{csv_file_path} has error in its table structure')
-        print(str(dfStructureError))
-        return
+        csv_table_creation_log['csv_error_category'] = 'CSV file structure error'
+        csv_table_creation_log['csv_error_message'] = dfStructureError
+        return csv_table_creation_log
         
     except UnicodeDecodeError as encodingError:
-        print(f'{csv_file_path} has error in encoding')
-        print(encodingError)
-        return
+        csv_table_creation_log['csv_error_category'] = 'CSV dataframe encoding error'
+        csv_table_creation_log['csv_error_message'] = encodingError
+        return csv_table_creation_log
 
-    except pd.io.common.EmptyDataError:
-        print(f'{csv_file_path} is empty')
-        return
+    except pd.io.common.EmptyDataError as emptyError:
+        # print(f'{csv_file_path} is empty')
+        csv_table_creation_log['csv_error_category'] = 'CSV file is empty'
+        csv_table_creation_log['csv_error_message'] = emptyError
+        return csv_table_creation_log
         
     # in case where scanFolder == True, don't create a SQL Table
     if scanFolder == False:
-        fileName = re.sub('_{2,}','_',re.sub('\s+|-+','_',Path(csv_file_path).stem))
-        sqlTableName = root_dir_name + '_' + fileName 
 
-        createSQLTable(dataframeObject,sqlTableName) 
+        sqlTableName = root_dir_name + '_' + fileName 
+        sql_table_creation_log = createSQLTable(dataframeObject,sqlTableName) 
+        csv_table_creation_log.update(sql_table_creation_log)
+        return csv_table_creation_log
+
+        
 
 #================================================
 # CREATING A TEST Dataframe
@@ -354,18 +405,43 @@ def main():
     parser.add_argument('--scanFolder',help='should be executed first before even trying to import CSV files into SQL Server Database. This flag is used to scan all CSV files (but not Excel files for now) and detect any possible error when reading them using Python Pandas library',action='store_true')
     args = parser.parse_args()
 
-    if args.filePath:
-        if os.path.exists(args.filePath):
+    # create output table creation log if it doesn't exist
+    log_file_columns = [
+                            'sql_error_category',
+                            'sql_error_message',
+                            'sql_table_name',
+                            'excel_error_category',
+                            'excel_error_message',
+                            'csv_error_category',
+                            'csv_error_message',
+                            'file_name',
+                            'file_path',
+                            'root_dir_name',
+                            'sheet_name',
+                        ]
 
-            subjectName = os.path.basename(os.path.dirname(args.filePath))
-            subjectName = re.sub('\s+','',subjectName).upper()
 
-            if re.search('\.xlsx$|\.xls$',args.filePath):
-                create_table_from_excel(args.filePath,subjectName)
+    if not os.path.exists('table_creation_log.csv'):
+        with open('table_creation_log.csv','w') as table_creation_log:
+            dict_writer_obj = DictWriter(table_creation_log,log_file_columns)
+            dict_writer_obj.writeheader()
 
-            # -- if the file is a csv file, execute this code block below
-            if re.search('\.csv$',args.filePath):
-                create_table_from_csv(args.filePath,subjectName)
+    table_creation_log = open('table_creation_log.csv','a+')
+    dict_writer_obj = DictWriter(table_creation_log,log_file_columns)
+    
+    if args.filePath and os.path.exists(args.filePath):
+
+        subjectName = os.path.basename(os.path.dirname(args.filePath))
+        subjectName = re.sub('\s+','',subjectName).upper()
+
+        if re.search('\.xlsx$|\.xls$',args.filePath):
+            table_creation_log_dict = create_table_from_excel(args.filePath,subjectName)
+
+        # -- if the file is a csv file, execute this code block below
+        if re.search('\.csv$',args.filePath):
+            table_creation_log_dict = create_table_from_csv(args.filePath,subjectName)
+        
+        dict_writer_obj.writerow(table_creation_log_dict)
                 
     else:
         if os.path.exists(args.folderPath) and os.path.isdir(args.folderPath):
@@ -385,21 +461,28 @@ def main():
                         if args.scanFolder:
                             if re.search('\.csv$',fileName):
                                 filePath = os.path.join(currentPath,fileName)
-                                create_table_from_csv(filePath,subjectName,fileName,scanFolder=True)
+                                table_creation_log_dict = create_table_from_csv(filePath,subjectName,scanFolder=True)
+                                pprint(table_creation_log_dict)
 
                         else:
                             #  -- if the file is an excel file, execute this code block below -- 
                             if re.search('\.xlsx$|\.xls$',fileName):
                                 filePath = os.path.join(currentPath,fileName)
-                                create_table_from_excel(filePath,subjectName,fileName)
+                                table_creation_log_dict = create_table_from_excel(filePath,subjectName)
+                                dict_writer_obj.writerow(table_creation_log_dict)
                             
                             # -- if the file is a csv file, execute this code block below
                             if re.search('\.csv$',fileName):
                                 filePath = os.path.join(currentPath,fileName)
-                                create_table_from_csv(filePath,subjectName,fileName)
+                                table_creation_log_dict = create_table_from_csv(filePath,subjectName)
+                                dict_writer_obj.writerow(table_creation_log_dict)
+                            
         else:
             print("The directory doesn't exist or the path specified is not a directory")
             exit()
+        
+    table_creation_log.close()
+
 
 if __name__ == '__main__':
     main()
