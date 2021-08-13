@@ -209,6 +209,8 @@ def insertValuesQueryString(dbName,schema,tableName,dataframe):
 
 def createSQLTable(dataframeObject,sqlTableName):
 
+    error_category,error_message = None,None
+
     ######################################################### 
     # Connect to Microsoft SQL Server
     ######################################################## 
@@ -235,12 +237,16 @@ def createSQLTable(dataframeObject,sqlTableName):
         try:
             cursor.execute(createTableString)
             cursor.commit()
+
         except pyodbc.ProgrammingError as pyodbcProgrammingError:
-            print(f'Table Creation Error: {sqlTableName}')
-            print(pyodbcProgrammingError)
+            error_category = f'SQL Table Creation Error: {sqlTableName}'
+            error_message = pyodbcProgrammingError
+            # print()
+            # print(pyodbcProgrammingError)
             cursor.close()
             conn.close()
-            return
+            return error_category,error_message
+
         # create a list of dataframes in chunks
         no_of_split = int(np.ceil(dataframeObject.shape[0]/ 500))
         dataframe_chunks = np.array_split(dataframeObject,no_of_split)
@@ -254,14 +260,18 @@ def createSQLTable(dataframeObject,sqlTableName):
                 cursor.execute(insertValueString)
                 cursor.commit()
             except pyodbc.ProgrammingError as pyodbcProgrammingError:
-                print(f'Table Inserting Value Error: {sqlTableName}')
-                print(pyodbcProgrammingError)
+                error_category = f'SQL Table Insert Value Error: {sqlTableName}'
+                error_message = pyodbcProgrammingError
+                # print(errorCategory)
+                # print(pyodbcProgrammingError)
                 cursor.close()
                 conn.close()
-                return
+                return error_category,error_message
 
     cursor.close()
     conn.close()
+
+    return error_category,error_message # should return None, None if this line is executed
 
 # ===========================================================
 # Generate SQL Server Table from an excel file
