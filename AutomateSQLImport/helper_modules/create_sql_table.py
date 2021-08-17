@@ -132,7 +132,7 @@ def create_table_from_csv(csv_file_path,root_dir_name,scanFolder=False):
     # =======================================
     # print errors and do return the function
     # =======================================
-    except pd.io.common.ParserError as dfStructureError:
+    except pd.errors.ParserError as dfStructureError:
         csv_table_creation_log['csv_error_category'] = 'CSV file structure error'
         csv_table_creation_log['csv_error_message'] = dfStructureError
         return csv_table_creation_log
@@ -142,7 +142,7 @@ def create_table_from_csv(csv_file_path,root_dir_name,scanFolder=False):
         csv_table_creation_log['csv_error_message'] = encodingError
         return csv_table_creation_log
 
-    except pd.io.common.EmptyDataError as emptyError:
+    except pd.errors.EmptyDataError as emptyError:
         # print(f'{csv_file_path} is empty')
         csv_table_creation_log['csv_error_category'] = 'CSV file is empty'
         csv_table_creation_log['csv_error_message'] = emptyError
