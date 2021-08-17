@@ -1,0 +1,13 @@
+sql_error_category,sql_error_message,sql_table_name,excel_error_category,excel_error_message,csv_error_category,csv_error_message,file_name,file_path,root_dir_name,sheet_name
+,,DATA4800_ABS_SEIF_2016,,,,,ABS_SEIF_2016.csv,C:\Users\stanley.setiawan\Documents\Datasets\DATA 4800\ABS_SEIF_2016.csv,DATA4800,
+,,DATA4800_ABS_SEIF_2016_Sheet1,,,,,ABS_SEIF_2016.xlsx,C:\Users\stanley.setiawan\Documents\Datasets\DATA 4800\ABS_SEIF_2016.xlsx,DATA4800,Sheet1
+,,DATA4800_DATA4800_Workshop2_Bank,,,,,DATA4800_Workshop2_Bank.csv,C:\Users\stanley.setiawan\Documents\Datasets\DATA 4800\DATA4800_Workshop2_Bank.csv,DATA4800,
+,,DATA4800_DATA4800_Workshop2_Bank_predict,,,,,DATA4800_Workshop2_Bank_predict.csv,C:\Users\stanley.setiawan\Documents\Datasets\DATA 4800\DATA4800_Workshop2_Bank_predict.csv,DATA4800,
+,,DATA4800_Data_4800_Workshop2_Candy,,,,,Data_4800_Workshop2_Candy.csv,C:\Users\stanley.setiawan\Documents\Datasets\DATA 4800\Data_4800_Workshop2_Candy.csv,DATA4800,
+,,DATA4800_iris,,,,,iris.csv,C:\Users\stanley.setiawan\Documents\Datasets\DATA 4800\iris.csv,DATA4800,
+,,DATA4800_pca_data,,,,,pca_data.csv,C:\Users\stanley.setiawan\Documents\Datasets\DATA 4800\pca_data.csv,DATA4800,
+,,DATA4800_perc_data,,,,,perc_data.csv,C:\Users\stanley.setiawan\Documents\Datasets\DATA 4800\perc_data.csv,DATA4800,
+,,,,,CSV file structure error,"Error tokenizing data. C error: Expected 1 fields in line 10, saw 9
+",pima_indians_diabetes.csv,C:\Users\stanley.setiawan\Documents\Datasets\DATA 4800\pima-indians-diabetes.csv,DATA4800,
+,,DATA4800_ROC,,,,,ROC.csv,C:\Users\stanley.setiawan\Documents\Datasets\DATA 4800\ROC.csv,DATA4800,
+,,DATA4800_rotation_data,,,,,rotation_data.csv,C:\Users\stanley.setiawan\Documents\Datasets\DATA 4800\rotation_data.csv,DATA4800,
