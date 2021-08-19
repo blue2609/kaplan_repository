@@ -1,0 +1,5 @@
+# Python
+__pycache__/
+
+# output csv
+table_creation_log.csv
