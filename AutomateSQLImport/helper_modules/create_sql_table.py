@@ -6,9 +6,15 @@ import chardet
 import re
 import pyodbc
 import numpy as np
+import configparser
 from pathlib import Path
 
-def createSQLTable(dataframeObject,sqlTableName):
+def createSQLTable(dataframeObject,sqlTableName,config_file):
+
+    # read db_config.ini
+    db_config = configparser.ConfigParser()
+    # db_config.read('./config/db_config.ini')
+    db_config.read(f'./config/{config_file}.ini')
 
     sql_table_creation_log = {
         'sql_error_category':None,
@@ -20,12 +26,15 @@ def createSQLTable(dataframeObject,sqlTableName):
     # Connect to Microsoft SQL Server
     ######################################################## 
 
-    dbName = 'MBAN'
-    schema = 'dbo'
-    conn = pyodbc.connect(f'''Driver={{SQL Server}};
-                            Server=KA-PF14P8C2\SQLEXPRESS;
-                            Database={dbName};
-                            Trusted_Connection=yes;''')
+    db_name = db_config['DB_CONFIG']['db_name']
+    db_schema = db_config['DB_CONFIG']['db_schema'] 
+    server_name = db_config['DB_CONFIG']['server_name'] 
+    trusted_connection = db_config['DB_CONFIG']['windows_authentication'] 
+    
+    conn = pyodbc.connect(fr'''Driver={{SQL Server}};
+                            Server={server_name};
+                            Database={db_name};
+                            Trusted_Connection={trusted_connection};''')
     cursor = conn.cursor()
     cursor.fast_executemany = True
 
@@ -33,12 +42,9 @@ def createSQLTable(dataframeObject,sqlTableName):
     if cursor.tables(table=sqlTableName,tableType = 'TABLE').fetchone() is None:
 
 
-    # print(getSQLTableStructure(dataframeObject))
 
-    # -- Create the table -- 
-    # createTableString = createTableQueryString(dbName,schema,tableName,getSQLTableStructure(dataframeObject)[0])
-        createTableString = createTableQueryString(dbName,schema,sqlTableName,getSQLTableStructure(dataframeObject)[0])
-        # print(createTableString)
+        # -- Create the table -- 
+        createTableString = createTableQueryString(db_name,db_schema,sqlTableName,getSQLTableStructure(dataframeObject)[0])
         try:
             cursor.execute(createTableString)
             cursor.commit()
@@ -56,8 +62,8 @@ def createSQLTable(dataframeObject,sqlTableName):
 
 
         for index,each_dataframe in enumerate(dataframe_chunks):
-            # insertValueString = insertValuesQueryString(dbName,schema,tableName,each_dataframe)
-            insertValueString = insertValuesQueryString(dbName,schema,sqlTableName,each_dataframe)
+            # insertValueString = insertValuesQueryString(db_name,db_schema,tableName,each_dataframe)
+            insertValueString = insertValuesQueryString(db_name,db_schema,sqlTableName,each_dataframe)
 
             try:
                 cursor.execute(insertValueString)
@@ -77,7 +83,7 @@ def createSQLTable(dataframeObject,sqlTableName):
 # ===========================================================
 # Generate SQL Server Table from an excel file
 # =========================================================
-def create_table_from_excel(excel_file_path,root_dir_name):
+def create_table_from_excel(excel_file_path,root_dir_name,config_file):
     fileName = Path(re.sub('_{2,}','_',re.sub('\s+|-+','_',excel_file_path))).stem.upper()
 
     excel_table_creation_log = {
@@ -100,7 +106,7 @@ def create_table_from_excel(excel_file_path,root_dir_name):
         if not dataframeObject.empty:
 
             sqlTableName = root_dir_name + '_' + fileName + '_' + sheetName
-            sql_table_creation_log = createSQLTable(dataframeObject,sqlTableName)
+            sql_table_creation_log = createSQLTable(dataframeObject,sqlTableName,config_file)
             excel_table_creation_log.update(sql_table_creation_log)
 
         return excel_table_creation_log
@@ -108,7 +114,7 @@ def create_table_from_excel(excel_file_path,root_dir_name):
 # ===========================================================
 # Generate SQL Server Table from a CSV file
 # =========================================================
-def create_table_from_csv(csv_file_path,root_dir_name,scanFolder=False):
+def create_table_from_csv(csv_file_path,root_dir_name,config_file,scanFolder=False):
 
     fileName = re.sub('_{2,}','_',re.sub('\s+|-+','_',Path(csv_file_path).stem))
 
@@ -143,7 +149,6 @@ def create_table_from_csv(csv_file_path,root_dir_name,scanFolder=False):
         return csv_table_creation_log
 
     except pd.errors.EmptyDataError as emptyError:
-        # print(f'{csv_file_path} is empty')
         csv_table_creation_log['csv_error_category'] = 'CSV file is empty'
         csv_table_creation_log['csv_error_message'] = emptyError
         return csv_table_creation_log
@@ -152,7 +157,7 @@ def create_table_from_csv(csv_file_path,root_dir_name,scanFolder=False):
     if scanFolder == False:
 
         sqlTableName = root_dir_name + '_' + fileName 
-        sql_table_creation_log = createSQLTable(dataframeObject,sqlTableName) 
+        sql_table_creation_log = createSQLTable(dataframeObject,sqlTableName,config_file) 
         csv_table_creation_log.update(sql_table_creation_log)
         return csv_table_creation_log
 

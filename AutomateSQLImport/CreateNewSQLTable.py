@@ -7,16 +7,20 @@ import argparse
 from csv import DictWriter 
 import os
 
-OUTPUT_LOG = 'OUTPUT_LOG'
-
-def main():
+def parse_arguments():
     # parse the arguments from command line
     parser = argparse.ArgumentParser()
+
     # parser.add_argument('--folderPath',required=True,help='specify subject absolute folder path in which excel/CSV files are located in')
     parser.add_argument('--folderPath',help='specify subject absolute folder path in which excel/CSV files are located in')
     parser.add_argument('--filePath',help='specify the file that should be imported to SQL Server Table')
     parser.add_argument('--scanFolder',help='should be executed first before even trying to import CSV files into SQL Server Database. This flag is used to scan all CSV files (but not Excel files for now) and detect any possible error when reading them using Python Pandas library',action='store_true')
-    args = parser.parse_args()
+    parser.add_argument('--configFile',help="specify which environment this script is executed in. Possible values are ['dev_machine','dev_server','non_prod','prod']")
+    return parser.parse_args()
+
+def main():
+
+    args = parse_arguments()
 
     # create output table creation log if it doesn't exist
     log_file_columns = [
@@ -34,6 +38,7 @@ def main():
                         ]
 
 
+    # Create table_creation_log.csv if it doesn't exist
     if not os.path.exists('table_creation_log.csv'):
         with open('table_creation_log.csv','w') as table_creation_log:
             dict_writer_obj = DictWriter(table_creation_log,log_file_columns)
@@ -74,20 +79,20 @@ def main():
                         if args.scanFolder:
                             if re.search('\.csv$',fileName):
                                 filePath = os.path.join(currentPath,fileName)
-                                table_creation_log_dict = create_table_from_csv(filePath,subjectName,scanFolder=True)
+                                table_creation_log_dict = create_table_from_csv(filePath,subjectName,args.configFile,scanFolder=True)
                                 pprint(table_creation_log_dict)
 
                         else:
                             #  -- if the file is an excel file, execute this code block below -- 
                             if re.search('\.xlsx$|\.xls$',fileName):
                                 filePath = os.path.join(currentPath,fileName)
-                                table_creation_log_dict = create_table_from_excel(filePath,subjectName)
+                                table_creation_log_dict = create_table_from_excel(filePath,subjectName,args.configFile)
                                 dict_writer_obj.writerow(table_creation_log_dict)
                             
                             # -- if the file is a csv file, execute this code block below
                             if re.search('\.csv$',fileName):
                                 filePath = os.path.join(currentPath,fileName)
-                                table_creation_log_dict = create_table_from_csv(filePath,subjectName)
+                                table_creation_log_dict = create_table_from_csv(filePath,subjectName,args.configFile)
                                 dict_writer_obj.writerow(table_creation_log_dict)
                             
         else:
