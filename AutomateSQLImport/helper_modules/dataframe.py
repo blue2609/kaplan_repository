@@ -64,7 +64,8 @@ def getDataframeStructure(dataframe):
         # - an empty string ''
         # - just a string that contains whitespaces '    '
         # - 'inf' which indicates positive or negative infinite (usually float) value
-        dataframe[columnName][empty_cells_indexes] = 'NULL' 
+        # dataframe[columnName][empty_cells_indexes] = 'NULL' 
+        dataframe.loc[empty_cells_indexes,columnName] = 'NULL' 
 
         allowNull = '' if empty_cells_indexes.size > 0 else 'NOT NULL' 
 
