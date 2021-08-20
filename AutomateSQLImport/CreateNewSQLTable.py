@@ -53,11 +53,11 @@ def main():
         subjectName = re.sub('\s+','',subjectName).upper()
 
         if re.search('\.xlsx$|\.xls$',args.filePath):
-            table_creation_log_dict = create_table_from_excel(args.filePath,subjectName)
+            table_creation_log_dict = create_table_from_excel(args.filePath,subjectName,args.configFile)
 
         # -- if the file is a csv file, execute this code block below
         if re.search('\.csv$',args.filePath):
-            table_creation_log_dict = create_table_from_csv(args.filePath,subjectName)
+            table_creation_log_dict = create_table_from_csv(args.filePath,subjectName,args.configFile)
         
         dict_writer_obj.writerow(table_creation_log_dict)
                 

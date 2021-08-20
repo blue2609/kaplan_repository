@@ -9,6 +9,14 @@ import numpy as np
 import configparser
 from pathlib import Path
 
+# ==========================================================
+# Convert date dataframe columns to string 
+# ==========================================================
+def convert_datecol_to_string(df_obj):
+    for column_name in df_obj.select_dtypes('datetime').columns:
+        df_obj[column_name] = df_obj[column_name].astype('str')
+    return df_obj
+
 def createSQLTable(dataframeObject,sqlTableName,config_file):
 
     # read db_config.ini
@@ -84,6 +92,9 @@ def createSQLTable(dataframeObject,sqlTableName,config_file):
 # Generate SQL Server Table from an excel file
 # =========================================================
 def create_table_from_excel(excel_file_path,root_dir_name,config_file):
+
+
+
     fileName = Path(re.sub('_{2,}','_',re.sub('\s+|-+','_',excel_file_path))).stem.upper()
 
     excel_table_creation_log = {
@@ -99,6 +110,8 @@ def create_table_from_excel(excel_file_path,root_dir_name,config_file):
     for sheetName in excelFile.sheet_names:
 
         dataframeObject = excelFile.parse(sheet_name=sheetName)
+        dataframeObject = convert_datecol_to_string(dataframeObject)
+
         sheetName = re.sub('_{2,}','_',re.sub('\s+|-+','_',sheetName))
         sheetName = re.sub('\(|\)','',sheetName)
         excel_table_creation_log['sheet_name'] = sheetName
@@ -109,7 +122,7 @@ def create_table_from_excel(excel_file_path,root_dir_name,config_file):
             sql_table_creation_log = createSQLTable(dataframeObject,sqlTableName,config_file)
             excel_table_creation_log.update(sql_table_creation_log)
 
-        return excel_table_creation_log
+    return excel_table_creation_log
 
 # ===========================================================
 # Generate SQL Server Table from a CSV file
