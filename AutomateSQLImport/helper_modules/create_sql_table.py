@@ -38,11 +38,22 @@ def createSQLTable(dataframeObject,sqlTableName,config_file):
     db_schema = db_config['DB_CONFIG']['db_schema'] 
     server_name = db_config['DB_CONFIG']['server_name'] 
     trusted_connection = db_config['DB_CONFIG']['windows_authentication'] 
-    
-    conn = pyodbc.connect(fr'''Driver={{SQL Server}};
-                            Server={server_name};
-                            Database={db_name};
-                            Trusted_Connection={trusted_connection};''')
+    user_name = db_config['DB_CONFIG']['user_name']
+    password = db_config['DB_CONFIG']['password']
+
+    if trusted_connection == 'yes':
+        connection_string = (fr'''Driver={{SQL Server}};
+                                Server={server_name};
+                                Database={db_name};
+                                Trusted_Connection={trusted_connection};''')
+    else:
+        connection_string = (fr'''Driver={{SQL Server}};
+                                Server={server_name};
+                                Database={db_name};
+                                UID={user_name};
+                                PWD={password}''')
+        
+    conn = pyodbc.connect(connection_string)
     cursor = conn.cursor()
     cursor.fast_executemany = True
 
