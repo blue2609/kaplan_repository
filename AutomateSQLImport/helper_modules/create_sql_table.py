@@ -38,8 +38,6 @@ def createSQLTable(dataframeObject,sqlTableName,config_file):
     server_name = db_config['DB_CONFIG']['server_name'] 
     trusted_connection = db_config['DB_CONFIG']['windows_authentication'] 
 
-
-
     if trusted_connection == 'yes':
         connection_string = (fr'''Driver={{SQL Server}};
                                 Server={server_name};
@@ -55,16 +53,12 @@ def createSQLTable(dataframeObject,sqlTableName,config_file):
                                 UID={user_name};
                                 PWD={password}''')
     
-    print(connection_string)
-        
     conn = pyodbc.connect(connection_string)
     cursor = conn.cursor()
     cursor.fast_executemany = True
 
     # only create the table if there is no table with the same name in the database
     if cursor.tables(table=sqlTableName,tableType = 'TABLE').fetchone() is None:
-
-
 
         # -- Create the table -- 
         createTableString = createTableQueryString(db_name,db_schema,sqlTableName,getSQLTableStructure(dataframeObject)[0])
