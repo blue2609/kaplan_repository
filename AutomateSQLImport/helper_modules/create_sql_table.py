@@ -20,8 +20,7 @@ def convert_datecol_to_string(df_obj):
 def createSQLTable(dataframeObject,sqlTableName,config_file):
 
     # read db_config.ini
-    db_config = configparser.ConfigParser()
-    # db_config.read('./config/db_config.ini')
+    db_config = configparser.ConfigParser(interpolation=None)
     db_config.read(f'./config/{config_file}.ini')
 
     sql_table_creation_log = {
