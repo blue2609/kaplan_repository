@@ -3,3 +3,6 @@ __pycache__/
 
 # output csv
 table_creation_log.csv
+
+# ini files
+config/*.ini
