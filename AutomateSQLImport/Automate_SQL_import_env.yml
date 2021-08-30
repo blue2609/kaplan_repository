@@ -1,4 +1,4 @@
-name: Automate_SQL_Import
+name: Automate_SQL_Import 
 channels:
   - anaconda
   - defaults
@@ -96,6 +96,7 @@ dependencies:
   - win_inet_pton=1.1.0=py38_0
   - wincertstore=0.2=py38_0
   - winpty=0.4.3=4
+  - xlrd=1.2.0=py_0
   - zeromq=4.3.2=ha925a31_3
   - zipp=3.3.1=py_0
   - zlib=1.2.11=vc14h1cdd9ab_1
