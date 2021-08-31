@@ -17,17 +17,11 @@ def convert_datecol_to_string(df_obj):
         df_obj[column_name] = df_obj[column_name].astype('str')
     return df_obj
 
-def createSQLTable(dataframeObject,sqlTableName,config_file):
+def connect_to_db(config_file):
 
     # read db_config.ini
     db_config = configparser.ConfigParser(interpolation=None)
     db_config.read(f'./config/{config_file}.ini')
-
-    sql_table_creation_log = {
-        'sql_error_category':None,
-        'sql_error_message':None,
-        'sql_table_name':None
-    }
 
     ######################################################### 
     # Connect to Microsoft SQL Server
@@ -56,6 +50,24 @@ def createSQLTable(dataframeObject,sqlTableName,config_file):
     conn = pyodbc.connect(connection_string)
     cursor = conn.cursor()
     cursor.fast_executemany = True
+    return db_name,db_schema,conn,cursor
+
+def sql_table_exists(config_file,sqlTableName):
+    *_,cursor = connect_to_db(config_file) 
+    if cursor.tables(table=sqlTableName,tableType = 'TABLE').fetchone() is None:
+        return False
+    else:
+        return True
+
+def createSQLTable(dataframeObject,sqlTableName,config_file):
+
+    sql_table_creation_log = {
+        'sql_error_category':None,
+        'sql_error_message':None,
+        'sql_table_name':None
+    }
+
+    db_name,db_schema,conn,cursor = connect_to_db(config_file)
 
     # only create the table if there is no table with the same name in the database
     if cursor.tables(table=sqlTableName,tableType = 'TABLE').fetchone() is None:
