@@ -102,21 +102,25 @@ def createSQLTable(dataframeObject,sqlTableName,config_file):
 # =========================================================
 def create_table_from_excel(excel_file_path,root_dir_name,config_file):
 
-
-
     fileName = Path(re.sub('_{2,}','_',re.sub('\s+|-+','_',excel_file_path))).stem.upper()
 
-    excel_table_creation_log = {
-       'excel_error_category':None,
-       'excel_error_message':None ,
-       'file_name':f'{fileName}.xlsx',
-       'file_path':excel_file_path,
-       'root_dir_name':root_dir_name,
-       'sheet_name':None
-    }
+
     
     excelFile = pd.ExcelFile(excel_file_path)
+
+    # create a list of dictionaries
+    list_of_excel_log = []
+
     for sheetName in excelFile.sheet_names:
+
+        excel_table_creation_log = {
+            'excel_error_category':None,
+            'excel_error_message':None ,
+            'file_name':f'{fileName}.xlsx',
+            'file_path':excel_file_path,
+            'root_dir_name':root_dir_name,
+            'sheet_name':None
+        }
 
         dataframeObject = excelFile.parse(sheet_name=sheetName)
         dataframeObject = convert_datecol_to_string(dataframeObject)
@@ -130,8 +134,9 @@ def create_table_from_excel(excel_file_path,root_dir_name,config_file):
             sqlTableName = root_dir_name + '_' + fileName + '_' + sheetName
             sql_table_creation_log = createSQLTable(dataframeObject,sqlTableName,config_file)
             excel_table_creation_log.update(sql_table_creation_log)
+            list_of_excel_log.append(excel_table_creation_log)
 
-    return excel_table_creation_log
+    return list_of_excel_log 
 
 # ===========================================================
 # Generate SQL Server Table from a CSV file

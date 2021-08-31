@@ -53,13 +53,14 @@ def main():
         subjectName = re.sub('\s+','',subjectName).upper()
 
         if re.search('\.xlsx$|\.xls$',args.filePath):
-            table_creation_log_dict = create_table_from_excel(args.filePath,subjectName,args.configFile)
+            excel_creation_log_list = create_table_from_excel(args.filePath,subjectName,args.configFile)
+            for excel_creation_log in excel_creation_log_list:
+                dict_writer_obj.writerow(excel_creation_log)
 
         # -- if the file is a csv file, execute this code block below
         if re.search('\.csv$',args.filePath):
-            table_creation_log_dict = create_table_from_csv(args.filePath,subjectName,args.configFile)
-        
-        dict_writer_obj.writerow(table_creation_log_dict)
+            csv_creation_log = create_table_from_csv(args.filePath,subjectName,args.configFile)
+            dict_writer_obj.writerow(csv_creation_log)
                 
     else:
         if os.path.exists(args.folderPath) and os.path.isdir(args.folderPath):
@@ -86,14 +87,15 @@ def main():
                             #  -- if the file is an excel file, execute this code block below -- 
                             if re.search('\.xlsx$|\.xls$',fileName):
                                 filePath = os.path.join(currentPath,fileName)
-                                table_creation_log_dict = create_table_from_excel(filePath,subjectName,args.configFile)
-                                dict_writer_obj.writerow(table_creation_log_dict)
+                                excel_creation_log_list = create_table_from_excel(filePath,subjectName,args.configFile)
+                                for excel_creation_log in excel_creation_log_list:
+                                    dict_writer_obj.writerow(excel_creation_log)
                             
                             # -- if the file is a csv file, execute this code block below
                             if re.search('\.csv$',fileName):
                                 filePath = os.path.join(currentPath,fileName)
-                                table_creation_log_dict = create_table_from_csv(filePath,subjectName,args.configFile)
-                                dict_writer_obj.writerow(table_creation_log_dict)
+                                csv_creation_log = create_table_from_csv(filePath,subjectName,args.configFile)
+                                dict_writer_obj.writerow(csv_creation_log)
                             
         else:
             print("The directory doesn't exist or the path specified is not a directory")
