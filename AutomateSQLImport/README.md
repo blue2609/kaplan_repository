@@ -3,6 +3,7 @@
 This project aims to automate the process of importing many Excel/CSV files into a SQL Server Database 
 
 The Python script aims to make this task easier by:
+
 - Going through a folder/directory and automatically iterate through all CSV/Excel worksheets in that directory and create new SQL Server table(s) generated from each CSV file/Excel worksheet in a SQL server database **(database name can be changed in the ini file passed to the script)**
 - Create a single SQL server table from a CSV file/Excel file with a single worksheet OR create multiple database tables from an Excel file with multiple worksheets automatically
 - Get the appropriate generic data type for each SQL server table column (`char(n)`/`varchar(n)`/`float`/`int`)
@@ -15,6 +16,7 @@ The Python script aims to make this task easier by:
 ## Database Table Created
 
 The script will automatically detect the generic data type of each column in the SQL Server table created from an Excel worksheet/CSV file. The generic data type can either be:
+
 - `float` for columns with decimal number values (3.14,5.33,etc.)
 - `char(n)` where n is the number of bytes used to store the string. This will be assigned to database columns where all of its values have the exact same number of characters
 - `varchar(n)` where n is the number of bytes used to store the string. n is calculated by:
@@ -39,6 +41,7 @@ The script also detects which columns contain `null` and which columns don't con
 ## Table Creation Log
 
 The script will record database tables it creates into `table_creation_log.csv` CSV file. This file contains the following columns:
+
 - `sql_error_category`: Lets user know what the type of SQL error that occurs. Can be either `SQL Table Creation` or `SQL Insert Value`
 - `sql_error_message`:The exact error message returned when creating the database table/inserting value to the database table
 - `sql_table_name`: The name of the database table created by the script
@@ -138,6 +141,7 @@ If the script finds potential errors which prevents it from reading the CSV file
  'filePath': 'path\to\file\employees.csv'}
 ```
 We can now see that in this directory:
+
 - `JC-201608-citibike-tripdata.csv` CSV file is empty
 - In `customers.csv`, the script expects 11 columns in line 18 but finds 12 values separated by comma instead 
 - In `employees.csv`, the script expects 18 columns in line 3 but finds 19 values separated by comma instead
@@ -155,6 +159,7 @@ With this, user can modify/fix the CSV file before they run the script to import
 ## Create Database Table(s) from a Single Excel/CSV file 
 
 The script can be used to:
+
 - Create a single SQL server table from a CSV file/Excel file with a single worksheet 
 - create multiple database tables from an Excel file with multiple worksheets
 
