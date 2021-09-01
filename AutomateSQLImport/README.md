@@ -1,3 +1,14 @@
+- [Introduction](#introduction)
+	- [Database Table Created](#database-table-created)
+	- [Table Creation Log](#table-creation-log)
+- [Help](#help)
+- [Config File](#config-file)
+- [Usage](#usage)
+	- [Scanning a directory for errors in CSV files](#scanning-a-directory-for-errors-in-csv-files)
+	- [Create Database Table(s) from a Single Excel/CSV file](#create-database-tables-from-a-single-excelcsv-file)
+	- [Create Database Table(s) from all CSV/Excel Files Within a Directory](#create-database-tables-from-all-csvexcel-files-within-a-directory)
+
+
 # Introduction
 
 This project aims to automate the process of importing many Excel/CSV files into a SQL Server Database 
