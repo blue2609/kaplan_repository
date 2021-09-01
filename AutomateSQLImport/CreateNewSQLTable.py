@@ -16,7 +16,7 @@ def parse_arguments():
     parser.add_argument('--folderPath',help='specify subject absolute folder path in which excel/CSV files are located in')
     parser.add_argument('--filePath',help='specify the file that should be imported to SQL Server Table')
     parser.add_argument('--scanFolder',help='should be executed first before even trying to import CSV files into SQL Server Database. This flag is used to scan all CSV files (but not Excel files for now) and detect any possible error when reading them using Python Pandas library',action='store_true')
-    parser.add_argument('--configFile',help="specify which environment this script is executed in. Possible values are ['dev_machine','dev_server','non_prod','prod']")
+    parser.add_argument('--configFile',help="Pass the name of the ini file (without the <.ini>) which contains the settings for SQL server database the script must connect to")
     return parser.parse_args()
 
 def main():
