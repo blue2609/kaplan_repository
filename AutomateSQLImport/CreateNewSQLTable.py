@@ -41,11 +41,11 @@ def main():
 
     # Create table_creation_log.csv if it doesn't exist
     if not os.path.exists('table_creation_log.csv'):
-        with open('table_creation_log.csv','w') as table_creation_log:
+        with open('table_creation_log.csv','w',newline='') as table_creation_log:
             dict_writer_obj = DictWriter(table_creation_log,log_file_columns)
             dict_writer_obj.writeheader()
 
-    table_creation_log = open('table_creation_log.csv','a+')
+    table_creation_log = open('table_creation_log.csv','a',newline='')
     dict_writer_obj = DictWriter(table_creation_log,log_file_columns)
     
     if args.filePath and os.path.exists(args.filePath):
