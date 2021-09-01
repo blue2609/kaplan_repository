@@ -6,3 +6,6 @@ table_creation_log.csv
 
 # ini files
 config/*.ini
+
+# visual studio code files
+.vscode/
