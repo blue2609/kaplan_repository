@@ -1,6 +1,7 @@
 # from typing_extensions import Required
 from helper_modules.create_sql_table import create_table_from_csv
 from helper_modules.create_sql_table import create_table_from_excel
+from helper_modules.dataframe import get_csv_dataframe
 from pprint import pprint
 import re
 import argparse
@@ -55,12 +56,14 @@ def main():
         if re.search('\.xlsx$|\.xls$',args.filePath):
             excel_creation_log_list = create_table_from_excel(args.filePath,subjectName,args.configFile)
             for excel_creation_log in excel_creation_log_list:
-                dict_writer_obj.writerow(excel_creation_log)
+                if excel_creation_log:
+                    dict_writer_obj.writerow(excel_creation_log)
 
         # -- if the file is a csv file, execute this code block below
         if re.search('\.csv$',args.filePath):
             csv_creation_log = create_table_from_csv(args.filePath,subjectName,args.configFile)
-            dict_writer_obj.writerow(csv_creation_log)
+            if csv_creation_log:
+                dict_writer_obj.writerow(csv_creation_log)
                 
     else:
         if os.path.exists(args.folderPath) and os.path.isdir(args.folderPath):
@@ -80,8 +83,11 @@ def main():
                         if args.scanFolder:
                             if re.search('\.csv$',fileName):
                                 filePath = os.path.join(currentPath,fileName)
-                                table_creation_log_dict = create_table_from_csv(filePath,subjectName,args.configFile,scanFolder=True)
-                                pprint(table_creation_log_dict)
+                                # table_creation_log_dict = create_table_from_csv(filePath,subjectName,args.configFile,scanFolder=True)
+                                table_creation_log_dict = get_csv_dataframe(filePath,return_dataframe_object=False)
+                                if table_creation_log_dict:
+                                    table_creation_log_dict['filePath'] = filePath
+                                    pprint(table_creation_log_dict)
 
                         else:
                             #  -- if the file is an excel file, execute this code block below -- 
@@ -89,13 +95,15 @@ def main():
                                 filePath = os.path.join(currentPath,fileName)
                                 excel_creation_log_list = create_table_from_excel(filePath,subjectName,args.configFile)
                                 for excel_creation_log in excel_creation_log_list:
-                                    dict_writer_obj.writerow(excel_creation_log)
+                                    if excel_creation_log:
+                                        dict_writer_obj.writerow(excel_creation_log)
                             
                             # -- if the file is a csv file, execute this code block below
                             if re.search('\.csv$',fileName):
                                 filePath = os.path.join(currentPath,fileName)
                                 csv_creation_log = create_table_from_csv(filePath,subjectName,args.configFile)
-                                dict_writer_obj.writerow(csv_creation_log)
+                                if csv_creation_log:
+                                    dict_writer_obj.writerow(csv_creation_log)
                             
         else:
             print("The directory doesn't exist or the path specified is not a directory")

@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from collections import namedtuple
 import numpy as np
+import chardet
 import re
 
 '''  **********************************************************************
@@ -161,3 +162,41 @@ def getSQLTableStructure(dataframe):
                                                   allowNull=namedTupleObj.allowNull)
     
     return (sqlTableStructure,dataFrameStructure)
+
+
+def get_csv_dataframe(csv_file_path,return_dataframe_object=True):
+    
+    # read the first 100KB of the file to 
+    # detect the encoding of the file 
+    with open(csv_file_path,'rb') as file:
+        detectedEncoding = chardet.detect(file.read(100000))['encoding']
+
+    dataframe_creation_error_log = {
+        'csv_error_category':None,
+        'csv_error_message':None
+    }
+
+    # =======================================
+    # return errors or dataframe
+    # =======================================
+    try:
+        dataframeObject = pd.read_csv(csv_file_path,encoding=detectedEncoding)
+        if return_dataframe_object:
+            return dataframeObject
+        else:
+            return None
+
+    except pd.errors.ParserError as dfStructureError:
+        dataframe_creation_error_log['csv_error_category'] = 'CSV file structure error'
+        dataframe_creation_error_log['csv_error_message'] = dfStructureError
+        return dataframe_creation_error_log
+
+    except UnicodeDecodeError as encodingError:
+        dataframe_creation_error_log['csv_error_category'] = 'CSV dataframe encoding error'
+        dataframe_creation_error_log['csv_error_message'] = encodingError
+        return dataframe_creation_error_log
+
+    except pd.errors.EmptyDataError as emptyError:
+        dataframe_creation_error_log['csv_error_category'] = 'CSV file is empty'
+        dataframe_creation_error_log['csv_error_message'] = emptyError
+        return dataframe_creation_error_log
