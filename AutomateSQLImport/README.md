@@ -11,9 +11,9 @@ The Python script aims to make this task easier by:
 - Get the appropriate generic data type for each SQL server table column (`char(n)`/`varchar(n)`/`float`/`int`)
 - Generate an output CSV file called `table_creation_log.csv` which contains corresponding SQL server table name created for each CSV/Excel worksheet 
 - Record errors in the output `table_creation_log.csv` file if:
-  - the script is unable to construct a dataframe from the CSV file
-  - the script is unable to construct a dataframe from an Excel worksheet (to be added)
-  - the script encounters errors when creating the database table or inserting values to the database table 
+    - the script is unable to construct a dataframe from the CSV file
+    - the script is unable to construct a dataframe from an Excel worksheet (to be added)
+    - the script encounters errors when creating the database table or inserting values to the database table 
 
 ## Database Table Created
 
@@ -21,17 +21,16 @@ The script will automatically detect the generic data type of each column in the
 
 - `float` for columns with decimal number values (3.14,5.33,etc.)
 - `char(n)` where n is the number of bytes used to store the string. This will be assigned to database columns where all of its values have the exact same number of characters
-- `varchar(n)` where n is the number of bytes used to store the string. n is calculated by:
-  - multiplying the max length of bytes required to store a value in a column with 2
-  - Add 9 to the result from previous step 
-  - Divide the result from previous step with 10 and get the quotient 
-  - Multiple the quotient with 10. 
-  For instance:
-	- max length of bytes required is 30 for a specific column. Hence, n = ((30 * 2) + 9) // 10 * 10. Hence n = 60
-	- max length of bytes required is 71 for a specific column. Hence, n = ((71 * 2) + 9) // 10 * 10. Hence n = 150
-	- max length of bytes required is 5 for a specific column. Hence, n = ((5 * 2) + 9) // 10 * 10. Hence n = 10 
-
-  This will be assigned to columns with varying string length
+- `varchar(n)` where `n` is the number of bytes used to store the string. `n` is calculated by:
+    - multiplying the max length of bytes required to store a value in a column with 2
+    - Add 9 to the result from previous step 
+    - Divide the result from previous step with 10 and get the quotient 
+    - Multiple the quotient with 10. For instance:
+        - max length of bytes required is 30 for a specific column. Hence, n = ((30 * 2) + 9) // 10 * 10. Hence n = 60
+        - max length of bytes required is 71 for a specific column. Hence, n = ((71 * 2) + 9) // 10 * 10. Hence n = 150
+        - max length of bytes required is 5 for a specific column. Hence, n = ((5 * 2) + 9) // 10 * 10. Hence n = 10 
+  
+    This will be assigned to columns with varying string length
 - `int/bigint` will be assigned to columns which only contain numbers without decimal points
 
 Below is a sample database table created by the script with automatic generic data type detected for each column
