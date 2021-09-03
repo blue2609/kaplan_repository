@@ -107,6 +107,8 @@ password = <password>
 
 Then, save this `.ini` file under `<root_directory_of_the_project>/config`
 
+Now, every time a user wants to create a new database table from a directory/an Excel file/a CSV file, they need to pass in this config file to the script with `--configFile <ini_file_name>` argument. The `<ini_file_name>` must not contain the `.ini` extension
+
 ---
 **NOTE**
 
