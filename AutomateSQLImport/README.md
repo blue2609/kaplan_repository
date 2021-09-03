@@ -31,6 +31,7 @@ The script will automatically detect the generic data type of each column in the
         - max length of bytes required is 5 for a specific column. Hence, n = ((5 * 2) + 9) // 10 * 10. Hence n = 10 
   
     This will be assigned to columns with varying string length
+
 - `int/bigint` will be assigned to columns which only contain numbers without decimal points
 
 Below is a sample database table created by the script with automatic generic data type detected for each column
