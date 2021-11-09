@@ -1,0 +1,15 @@
+[
+	{
+	   "name":"User1",
+	   "roles":[
+	      "System Administrator",
+	      "System User"
+	   ]
+	},
+	{
+	   "name":"User2",
+	   "roles":[
+	      "System User"
+	   ]
+	}
+]

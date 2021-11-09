@@ -1,0 +1,24 @@
+[
+	{
+		"name":"spyder_ide",
+		"packages":[
+			{
+				"pkg_manager":"mamba",
+				"channel":"conda-forge",
+				"pkg_names":[
+					"spyder",
+					"spyder-kernels",
+					"spyder-terminal",
+					"spyder-unittest",
+					"spyder-memory-profiler",
+					"spyder-notebook",
+					"spyder-reports",
+					"spyder-line-profiler",
+					"spyder-remote-client",
+					"spyder-screencast",
+					"spyder-remote-server"
+				]
+			}	
+		]
+	}
+]

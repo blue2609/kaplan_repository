@@ -1,0 +1,33 @@
+[
+	{
+		"name":"orange_data_mining",
+		"packages":[
+			{
+				"pkg_manager":"mamba",
+				"channel":"conda-forge",
+				"pkg_names":[
+					"orange3",
+					"orange3-timeseries",
+					"orange3-imageanalytics",
+					"orange3-geo",
+					"orange3-network",
+					"orange3-educational",
+					"orange3-bioinformatics",
+					"orange3-singlecell",
+					"orange3-explain",
+					"orange3-associate",
+					"orange3-prototypes",
+					"orange3-survival-analysis"
+				]
+			},
+			{
+				"pkg_manager":"pip",
+				"pkg_names":[
+					"Orange3-Text",
+					"Orange3-Textable",
+					"Orange-Spectroscopy"
+				]
+			}
+		]
+	}
+]

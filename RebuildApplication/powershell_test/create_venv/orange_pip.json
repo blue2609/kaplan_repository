@@ -1,0 +1,15 @@
+[
+	{
+		"name":"orange_pip",
+		"packages":[
+			{
+				"pkg_manager":"pip",
+				"pkg_names":[
+					"Orange3-Text",
+					"Orange3-Textable",
+					"Orange-Spectroscopy"
+				]
+			}
+		]
+	}
+]
