@@ -1,0 +1,16 @@
+{
+	"name":"jupyterlab",
+	"start_dir":"C:/Users/Administrator/Documents/Datasets",
+	"run_command":"jupyter lab",
+	"packages":[
+		{
+			"pkg_manager":"mamba",
+			"channel":"conda-forge",
+			"pkg_names":[
+				"jupyterlab",
+				"jupyterlab-git",
+				"jupyterlab_code_formatter"
+			]
+		}
+	]
+}

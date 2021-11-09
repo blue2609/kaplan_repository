@@ -1,0 +1,7 @@
+name: jupyterlab
+channels:
+    - conda-forge
+dependencies:
+    - conda-forge::jupyterlab
+    - conda-forge::jupyterlab_code_formatter
+    - conda-forge::jupyterlab-git

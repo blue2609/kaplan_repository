@@ -1,0 +1,20 @@
+name: orange_data_mining
+channels:
+    - conda-forge
+dependencies:
+    - conda-forge::orange3
+    - conda-forge::orange3-timeseries
+    - conda-forge::orange3-imageanalytics
+    - conda-forge::orange3-geo
+    - conda-forge::orange3-network
+    - conda-forge::orange3-educational
+    - conda-forge::orange3-bioinformatics
+    - conda-forge::orange3-singlecell
+    - conda-forge::orange3-explain
+    - conda-forge::orange3-associate
+    - conda-forge::orange3-prototypes
+    - conda-forge::orange3-survival-analysis
+    - pip:
+        - Orange3-Text
+        - Orange3-Textable
+        - Orange-Spectroscopy

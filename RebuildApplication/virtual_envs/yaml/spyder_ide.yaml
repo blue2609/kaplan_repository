@@ -1,0 +1,16 @@
+name: spyder_ide
+channels:
+    - conda-forge
+dependencies:
+    - conda-forge::spyder
+    - conda-forge::spyder-kernels
+    - conda-forge::spyder-terminal
+    - conda-forge::spyder-unittest
+    - conda-forge::spyder-memory-profiler
+    - conda-forge::spyder-notebook
+    - conda-forge::spyder-reports
+    - conda-forge::spyder-line-profiler
+    - conda-forge::spyder-remote-client
+    - conda-forge::spyder-screencast
+    - conda-forge::spyder-remote-server
+ 
