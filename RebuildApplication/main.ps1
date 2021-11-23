@@ -25,14 +25,10 @@ if ($InstallMamba) {
 	}
 }
 
-# install packages to base environment as specified by base_env.yaml
-Start-Process cmd -ArgumentList @(
-	"/c","powershell",
-	"mamba","env","update","-f","base_env.yaml"
-) -Wait
-
 Start-Process cmd -ArgumentList @(
 	"/c","powershell","./create_venvs.ps1",
 	"-VenvCreationMethod",$VenvCreationMethod,
 	"-RunCmdDir",$RunCmdDir
 ) -Wait
+
+# publish the applications
