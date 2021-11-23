@@ -1,0 +1,18 @@
+[
+	{
+		"env_name":"base",
+		"run_command":"python $env:CONDA_PREFIX/cwp.py $env:CONDA_PREFIX bash --login -i --",
+		"alias":"git-bash",
+		"display_name":"git-bash",
+		"start_dir":"C:/Users/Administrator/Documents/Datasets",
+		"icon_path":"icons/git-bash.ico"
+	},
+	{
+		"env_name":"base",
+		"run_command":"anaconda-navigator",
+		"alias":"anaconda-navigator",
+		"display_name":"anaconda-navigator",
+		"start_dir":"C:/Users/Administrator/Documents/Datasets",
+		"icon_path":"icons/anaconda-navigator.ico"
+	}
+]

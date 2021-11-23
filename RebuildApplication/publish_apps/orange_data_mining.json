@@ -1,0 +1,10 @@
+[
+	{
+		"env_name":"orange_data_mining",
+		"run_command":"orange-canvas",
+		"alias":"orange",
+		"display_name":"Orange",
+		"start_dir":"C:/Users/Administrator/Documents/Datasets",
+		"icon_path":"icons/orange.ico"
+	}
+]

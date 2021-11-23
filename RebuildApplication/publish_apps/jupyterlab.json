@@ -1,0 +1,10 @@
+[
+	{
+		"env_name":"jupyterlab",
+		"run_command":"jupyter lab",
+		"alias":"jupyterlab",
+		"display_name":"JupyterLab",
+		"start_dir":"C:/Users/Administrator/Documents/Datasets",
+		"icon_path":"icons/jupyterlab.ico"
+	}
+]

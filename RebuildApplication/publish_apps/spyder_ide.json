@@ -1,0 +1,10 @@
+[
+	{
+		"env_name":"spyder_ide",
+		"run_command":"spyder",
+		"alias":"spyder",
+		"display_name":"Spyder",
+		"start_dir":"C:/Users/Administrator/Documents/Datasets",
+		"icon_path":"icons/spyder.ico"
+	}
+]
