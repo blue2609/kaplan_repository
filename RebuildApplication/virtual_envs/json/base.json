@@ -1,0 +1,22 @@
+{
+	"name":"base",
+	"start_dir":"C:/Users/Administrator/Documents/Datasets",
+	"run_command":"orange-canvas",
+	"packages":[
+		{
+			"pkg_manager":"mamba",
+			"channel":"conda-forge",
+			"pkg_names":[
+				"git",
+				"git-bash"
+			]
+		},
+		{
+			"pkg_manager":"mamba",
+			"channel":"defaults",
+			"pkg_names":[
+				"anaconda-navigator"
+			]
+		}
+	]
+}
