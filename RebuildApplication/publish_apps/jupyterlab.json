@@ -3,8 +3,16 @@
 		"env_name":"jupyterlab",
 		"run_command":"jupyter lab",
 		"alias":"jupyterlab",
-		"display_name":"JupyterLab",
+		"display_name":"Jupyter-Lab",
 		"start_dir":"C:/Users/Administrator/Documents/Datasets",
 		"icon_path":"icons/jupyterlab.ico"
+	},
+	{
+		"env_name":"jupyterlab",
+		"run_command":"jupyter notebook",
+		"alias":"jupyter-notebook",
+		"display_name":"Jupyter-Notebook",
+		"start_dir":"C:/Users/Administrator/Documents/Datasets",
+		"icon_path":"icons/jupyter-notebook.ico"
 	}
 ]
