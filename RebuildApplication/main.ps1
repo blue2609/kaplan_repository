@@ -32,3 +32,7 @@ Start-Process cmd -ArgumentList @(
 ) -Wait
 
 # publish the applications
+Start-Process cmd -ArgumentList @(
+	"/c","powershell","./publish_apps.ps1",
+	"-RunCmdDir",$RunCmdDir
+) -Wait
