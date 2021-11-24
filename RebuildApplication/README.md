@@ -59,29 +59,29 @@ The `virtual_envs` directory contains 2 sub-directories:
 
 - `json` sub-directory contains a set of JSON files where each file corresponds to a virtual environment the script is going to create on the server as well as the packages that will be installed inside each virtual environment. For instance, in the `base.json` file, we define:
 
-  ```
-  {
-    "name":"base",
-    "packages":[
-      {
-        "pkg_manager":"mamba",
-        "channel":"conda-forge",
-        "pkg_names":[
-          "git",
-          "git-bash"
+    ```
+    {
+        "name":"base",
+        "packages":[
+        {
+            "pkg_manager":"mamba",
+            "channel":"conda-forge",
+            "pkg_names":[
+            "git",
+            "git-bash"
+            ]
+        },
+        {
+            "pkg_manager":"mamba",
+            "channel":"defaults",
+            "pkg_names":[
+            "anaconda-navigator"
+            ]
+        }
         ]
-      },
-      {
-        "pkg_manager":"mamba",
-        "channel":"defaults",
-        "pkg_names":[
-          "anaconda-navigator"
-        ]
-      }
-    ]
-  }
-  ```
-  which states that we want to install **`git`,`git-bash` and `anaconda-navigator`** packages in `base` virtual environment. Some other details include:
+    }
+    ```
+    which states that we want to install **`git`,`git-bash` and `anaconda-navigator`** packages in `base` virtual environment. Some other details include:
   
   -  `pkg_manager` which defines the package manager you want to use to install this package. Please always use `"mamba"` here as much as possible unless you need to download something from PyPi in which case you need to specify `"pip"` here
   - `channel` which defines the channel you want the package to be downloaded from. You can even define a custom channel here (if Kaplan has one)
@@ -111,6 +111,7 @@ The main script for this project is `main.ps1` and user can pass 4 different par
 - `InstallMamba` **[Optional]** is a **PowerShell switch parameter** which dictates whether or not you want the script to install **mamba** and **conda** environment/package manager to the server. If the server already has conda/mamba installed, user might not want to install them again and this is why this option was provided. 
 - `GetLatestMamba` **[Optional]** is a **PowerShell switch parameter** which dictates if the user wants to re-download the **mamba_installer.exe** to ensure that the mamba/conda package manager installed on the server are the latest versions. 
 - `VenvCreationMethod` **[Optional]** is a parameter that accepts only 2 possible string values:
+
   - `default`: 
   	
 	If **"default"** is passed as value to this parameter, the script will read the `virtual_envs/yaml/*.yaml` YAML files to create the virtual environments and install applications inside each virtual environment
