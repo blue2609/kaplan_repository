@@ -1,7 +1,5 @@
 {
 	"name":"jupyterlab",
-	"start_dir":"C:/Users/Administrator/Documents/Datasets",
-	"run_command":"jupyter lab",
 	"packages":[
 		{
 			"pkg_manager":"mamba",

@@ -1,7 +1,5 @@
 {
 	"name":"base",
-	"start_dir":"C:/Users/Administrator/Documents/Datasets",
-	"run_command":"orange-canvas",
 	"packages":[
 		{
 			"pkg_manager":"mamba",

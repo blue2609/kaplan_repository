@@ -1,7 +1,5 @@
 {
 	"name":"spyder_ide",
-	"start_dir":"C:/Users/Administrator/Documents/Datasets",
-	"run_command":"spyder",
 	"packages":[
 		{
 			"pkg_manager":"mamba",
