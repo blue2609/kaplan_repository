@@ -1,10 +1,5 @@
 [TOC]
 
-# Rebuilding MBATS Applications
-This project contains all the PowerShell scripts to re-install data analytics applications used by KBS on a new Windows Server
-
-`mamba_installer.exe` is included in this repository but it might not be the most up-to-date one. In order to get the latest installer, please run `mamba_download.ps1` PowerShell script to get the latest Windows mamba package manager installer from mambaforge
-
 # Script Workflow
 
 ## **High Level Overview** 
@@ -130,7 +125,13 @@ The `virtual_envs` directory contains 2 sub-directories:
 
 ## **Publish Apps Config**
 
-These are essentially JSON files located inside `publish_apps` directory which will be used to specify these 2 things for each application:
+### RDS (Remote Desktop Services) Config
+
+This is the JSON file the user can find in the root directory of this project named `"publish_apps_config.json'`. This JSON file contains the **RDS CollectionName** as well as the **Connection Broker**. Please set these values to the right one before running the script
+
+### Remote Apps Config
+
+These are JSON files located inside `publish_apps` directory which will be used to specify these 2 things for each application:
 
 - **Specify the `run command script` for each application**
     
@@ -157,6 +158,13 @@ These are essentially JSON files located inside `publish_apps` directory which w
     ]
     ```
 
+    ---
+    **IMPORTANT**
+
+    Please make sure that the `start_dir` exists on the server and it's a path where users can modify datasets/scripts
+
+    ---
+
     As there are 2 appliations listed in this JSON file, this JSON configuration file is going to create 2 `run command scripts`, one for `Jupyter-Lab.ps1` and the other one `Jupyter-Notebook.ps1`. As previously mentioned in the previous section, each `run command script` is a very simple script which contains this from of PowerShell code:
 
     ```
@@ -181,7 +189,29 @@ These are essentially JSON files located inside `publish_apps` directory which w
     jupyter notebook
     ```
 
-- Specify the **`alias`**, **`display_name`** as well as **`icon_path`** for each published Remote App on RDWeb.
+- Specify the **`alias`**, **`display_name`** as well as **`icon_path`** for each published Remote App on RDWeb 
+    
+    For instance, this JSON file configuration for `Spyder` application:
+
+    ```
+    [
+        {
+            "env_name":"spyder_ide",
+            "run_command":"spyder",
+            "alias":"spyder",
+            "display_name":"Spyder",
+            "start_dir":"C:/Users/Administrator/Documents/Datasets",
+            "icon_path":"./publish_apps/icons/spyder.ico"
+        }
+    ]
+    ```
+
+    The PowerShell script will take the `alias`, `display_name` and `icon_path` to generate this Remote app on RDWeb:
+
+    ![Spyder Remote App on RDWeb](readme_images/spyder_remoteapp_icon.png)
+
+
+
 
 # Before Running the Script
 
@@ -213,7 +243,9 @@ Having the **"Quick Edit Mode"** enabled will cause PowerShell and Command Promp
 The main script for this project is `main.ps1` and user can pass 4 different parameters to this PowerShell script. Most of these parameters are optional with `RunCmdDir` parameter being the only mandatory parameter that user must specify every time they run the script:
 
 - `InstallMamba` **[Optional]** is a **PowerShell switch parameter** which dictates whether or not you want the script to install **mamba** and **conda** environment/package manager to the server. If the server already has conda/mamba installed, user might not want to install them again and this is why this option was provided. 
-- `GetLatestMamba` **[Optional]** is a **PowerShell switch parameter** which dictates if the user wants to re-download the **mamba_installer.exe** to ensure that the mamba/conda package manager installed on the server are the latest versions. 
+
+- `GetLatestMamba` **[Optional]** is a **PowerShell switch parameter** which dictates if the user wants to re-download the **mamba_installer.exe** to ensure that the mamba/conda package manager installed on the server are of the latest versions. 
+
 - `VenvCreationMethod` **[Optional]** is a parameter that accepts only 2 possible string values:
 
     - `default`: 
@@ -254,7 +286,7 @@ Remember, the user didn't need to specify `VenvCreationMethod` parameter above a
 
 Now, suppose there's another situation where the user wants to :
 
-- Install mamba and conda WITHOUT having to download the latest mamba installers
+- Install mamba and conda WITHOUT having to download the latest mamba installer
 - Create the virtual environments and install applications specified inside each YAML file in `virtual_envs/YAML`and use the default conda/mamba package installation mechanism **(to ensure that all packages are installed)**. 
 - Save all resulting PowerShell run scripts to `"C:\Users\Admin\Desktop\run_cmd_dir"`
 - Publish all the applications defined in `publish_apps/*.json` JSON files as remote apps
@@ -270,24 +302,46 @@ In order to do so, the user must go to the root directory of this project and ru
 
 # Testing Results
 
+## **Windows Server 2022 Standard Edition VM with Hyper-V**
+
+
+When testing the script on a Windows Server 2022 Standard Edition VM with Hyper-V, here are the results:
+
+| Operation   | Successful | Comment|
+|-------------|-------------|-----------|
+| Getting Latest Mamba Installer| yes |No error when downloading the latest mamba installer AS LONG as ZScaler is turned off|
+| Installing Mamba| Yes|The script was able to use the existing installer included inside this repository to install mamba and conda|
+| Creating Virtual Environemnts| Yes|No problem in creating any virtual environments. However, I do notice that one or two packages under `orange_data_mining` virtual environment output an error when during their installation. This, however, does not affect the final virtual virtual environment created for Orange data mining application and as such it's a low priority concern. Ideally though, this needs to be fixed.|
+| Creating `run command scripts`|Yes|No problem in creating run command scripts in a specific directory|
+| Publish application(s) as Remote Apps|N/A|Can't be tested on the VM because this requires Remote Desktop Services |
+
 ## **Windows Server 2016 EC2 Instance [KAP-AWS-RDSS-1N]**
 
 
 When testing the script on KAP-AWS-RDSS-1N Non-Prod, Windows Server 2016 AWS EC2 instance, below are the results:
 
-| Operation   | Successful | Description|
+| Operation   | Successful | Comment|
 |-------------|-------------|-----------|
 | Getting Latest Mamba Installer| no|There's an error with TLS/SSL certificate which might be related to Sophos or other security application on the server preventing the script to download the latest mamba installer from mamba GitHub page|
 | Installing Mamba| Yes|The script was able to use the existing installer included inside this repository to install mamba and conda|
-| Creating Virtual Environemnts| Yes||
-| Creating `run command scripts`|| |
-| Publishing application as Remote Apps|| |
+| Creating Virtual Environemnts| Yes|No problem in creating the virtual environments and all applications work with no problem|
+| Creating `run command scripts`|Yes|Run command scripts are created at the specified directory path|
+| Publish applications as Remote Apps|Yes|Applications are Deployed as Remote Apps on RDWeb. However, every an application is launched as a remote app, the Powershell window will pop up as well. Perhaps there's a way to prevent this by modifying the code |
 
-Script Executes finishes its execution after about an hour during my testing.
+Script finishes its execution after about 30 minutes during my testing.
 
 # Proposed Improvements
 
+## **Performance**
+
 The script is bound by I/O of the file system. Currently, the script is running sequentially such that it installs each virtual environment and generate the `run command script` one at a time. Instead of doing this, multiprocessing/multithreading or any form of parrallel programming and concurrency must be added to this project so that the program can create multiple virtual environments at the same time. I believe this will make the script executes significantly faster.
-  
+
+## **Build Scripts for Other Platforms**
+
+Currently, the purpose of this project is to rebuild conda/mamba environment for a Windows Server environment with RDS. With that said, this project can also be useful to create a base image for data analytics environment as well. Please do remember however that there needs to be extra development time to create a separate version of scripts for Unix/Linux environment. Either that or find a way to run PowerShell scripts in a Linux environment. 
+
+## **Providing Script for Students**
+
+In addition, this script can be useful to build data analytics environment on students' local machine as well which ensures consistency between what is being taught by lecturers and the conda/mamba applications on students' machine. 
 
 
