@@ -25,6 +25,7 @@ if ($InstallMamba) {
 	}
 }
 
+# Create the virtual environments
 Start-Process cmd -ArgumentList @(
 	"/c","powershell","./create_venvs.ps1",
 	"-VenvCreationMethod",$VenvCreationMethod,
