@@ -5,7 +5,7 @@
 		"alias":"git-bash",
 		"display_name":"git-bash",
 		"start_dir":"C:/Users/Administrator/Documents/Datasets",
-		"icon_path":"icons/git-bash.ico"
+		"icon_path":"./publish_apps/icons/git-bash.ico"
 	},
 	{
 		"env_name":"base",
@@ -13,6 +13,6 @@
 		"alias":"anaconda-navigator",
 		"display_name":"anaconda-navigator",
 		"start_dir":"C:/Users/Administrator/Documents/Datasets",
-		"icon_path":"icons/anaconda-navigator.ico"
+		"icon_path":"./publish_apps/icons/anaconda-navigator.ico"
 	}
 ]

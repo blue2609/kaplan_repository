@@ -5,6 +5,6 @@
 		"alias":"orange",
 		"display_name":"Orange",
 		"start_dir":"C:/Users/Administrator/Documents/Datasets",
-		"icon_path":"icons/orange.ico"
+		"icon_path":"./publish_apps/icons/orange.ico"
 	}
 ]

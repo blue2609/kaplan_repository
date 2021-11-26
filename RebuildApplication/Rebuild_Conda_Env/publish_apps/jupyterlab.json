@@ -5,7 +5,7 @@
 		"alias":"jupyterlab",
 		"display_name":"Jupyter-Lab",
 		"start_dir":"C:/Users/Administrator/Documents/Datasets",
-		"icon_path":"icons/jupyterlab.ico"
+		"icon_path":"./publish_apps/icons/jupyterlab.ico"
 	},
 	{
 		"env_name":"jupyterlab",
@@ -13,7 +13,7 @@
 		"alias":"jupyter-notebook",
 		"display_name":"Jupyter-Notebook",
 		"start_dir":"C:/Users/Administrator/Documents/Datasets",
-		"icon_path":"icons/jupyter-notebook.ico"
+		"icon_path":"./publish_apps/icons/jupyter-notebook.ico"
 	}
 ]
 

@@ -5,6 +5,6 @@
 		"alias":"spyder",
 		"display_name":"Spyder",
 		"start_dir":"C:/Users/Administrator/Documents/Datasets",
-		"icon_path":"icons/spyder.ico"
+		"icon_path":"./publish_apps/icons/spyder.ico"
 	}
 ]
