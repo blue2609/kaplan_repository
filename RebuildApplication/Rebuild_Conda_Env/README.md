@@ -215,6 +215,14 @@ These are JSON files located inside `publish_apps` directory which will be used 
 
 # Before Running the Script
 
+## Set Execution Policy to Unrestricted
+
+Please set the PowerShell script execution policy to `Unrestricted` using this PowerShell cmdlet below
+
+```
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+```
+
 
 ## **Turn Off/Deactivate ZScaler**
 
